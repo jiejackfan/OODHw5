@@ -2,21 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ec4150fc-23dd-4673-b299-318fd793318d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/AShape.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/AnimationOperation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/IShape.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Motion.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Oval.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Position2D.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Rectangle.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/AnimationModelTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Animation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hw5.iml" beforeDir="false" afterPath="$PROJECT_DIR$/hw5.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AShape.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AShape.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AnimationModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AnimationModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ShapeCreator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AnimationOperation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AnimationOperation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Motion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Motion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Oval.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Oval.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Position2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Position2D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Rectangle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Rectangle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/AnimationModelTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/AnimationModelTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,6 +41,10 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -87,10 +86,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="361" y="75" key="#Project_Structure/0.0.1536.824@0.0.1536.824" timestamp="1582836539245" />
-    <state x="489" y="101" key="#com.intellij.ide.util.MemberChooser" timestamp="1582859726038">
+    <state x="489" y="101" key="#com.intellij.ide.util.MemberChooser" timestamp="1582924569183">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="489" y="101" key="#com.intellij.ide.util.MemberChooser/0.0.1440.900@0.0.1440.900" timestamp="1582859726038" />
+    <state x="489" y="101" key="#com.intellij.ide.util.MemberChooser/0.0.1440.900@0.0.1440.900" timestamp="1582924569183" />
     <state x="270" y="0" key="CommitChangelistDialog2" timestamp="1582862093029">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -103,14 +102,26 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="279" y="58" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1582836565019" />
-    <state x="463" y="358" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1582862065089">
+    <state x="318" y="244" key="com.intellij.ide.util.TipDialog" timestamp="1582950451300">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="463" y="358" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1440.900@0.0.1440.900" timestamp="1582862065089" />
+    <state x="318" y="244" key="com.intellij.ide.util.TipDialog/0.0.1440.900@0.0.1440.900" timestamp="1582950451300" />
+    <state x="264" y="334" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1582952219641">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="264" y="334" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1440.900@0.0.1440.900" timestamp="1582952219641" />
+    <state x="463" y="358" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1582955430883">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="463" y="358" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1440.900@0.0.1440.900" timestamp="1582955430883" />
     <state x="209" y="40" key="new project wizard" timestamp="1582836491587">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="209" y="40" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1582836491587" />
+    <state x="0" y="0" width="588" height="900" key="refactoring.ChangeSignatureDialog" timestamp="1582951757830">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="0" y="0" width="588" height="900" key="refactoring.ChangeSignatureDialog/0.0.1440.900@0.0.1440.900" timestamp="1582951757830" />
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1582837140417">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
