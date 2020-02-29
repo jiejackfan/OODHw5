@@ -1,11 +1,13 @@
-import java.awt.*;
-
 public interface AnimationOperation {
 
   void createShape(String shape, String name);
 
-  void addMotion(int startTime, int endTime, Position2D startPosition, Position2D endPosition,
-                 double startWidth, double endWidth, double startHeight, double endHeight,
-                 Color startColor, Color endColor);
+  void addMotion(String name, int startTime, int startX, int startY, double startWidth,
+                 double startHeight, int startColorR, int startColorB, int startColorG,
+                 int endTime, int endX, double endY, double endWidth,
+                 double endHeight, int endColorR,
+                 int endColorB, int endColorG);
+
+  String toString();
 
 }

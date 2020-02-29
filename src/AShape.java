@@ -6,25 +6,19 @@ import java.awt.*;
  */
 public abstract class AShape implements IShape {
 
-  protected String name;
   protected Color color;
   protected Position2D position;
   protected double width;
   protected double height;
 
-  public AShape(String name) {
-    if (name == null || name.equals("")) {
-      throw new IllegalArgumentException("The name cannot be null or empty.");
-    }
-    this.name = name;
+  public AShape() {
+    //
   }
 
-  public AShape(String name, Color color, Position2D position, double width, double height) {
-    if (name == null || name.equals("")) {
-      throw new IllegalArgumentException("The name cannot be null or empty.");
+  public AShape(Color color, Position2D position, double width, double height) {
+    if (width <= 0 || height <= 0) {
+      throw new IllegalArgumentException("The width and height must be positive");
     }
-
-    this.name = name;
     this.color = color;
     this.position = position;
     this.width = width;
