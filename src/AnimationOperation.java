@@ -10,4 +10,6 @@ public interface AnimationOperation {
 
   String toString();
 
+  boolean checkValidAnimation();
+
 }

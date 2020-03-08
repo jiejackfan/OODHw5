@@ -9,9 +9,17 @@ public class AnimationModel implements AnimationOperation {
   private final Map<String, IShape> nameMap;
   private final Map<IShape, List<Motion>> animation;
 
+  private final static int DEFAULT_WIDTH = 1000;
+  private final static int DEFAULT_HEIGHT = 1000;
+
+  private final int canvasWidth;
+  private final int canvasHeight;
+
   public AnimationModel() {
     this.nameMap = new HashMap<>();
     this.animation = new HashMap<>();
+    this.canvasWidth = DEFAULT_WIDTH;
+    this.canvasHeight = DEFAULT_HEIGHT;
   }
 
   @Override
@@ -50,6 +58,7 @@ public class AnimationModel implements AnimationOperation {
             || startColorB < 0 || startColorB > 255 || endColorB < 0 || endColorB > 255) {
       throw new IllegalArgumentException("The RGB value must be within the range.");
     }
+
     // Other parameters are check when constructing the motion, and the parameters of position are
     // checked in the position2D in the constructor of class position2D.
     animation.get(nameMap.get(name)).add(
@@ -66,15 +75,41 @@ public class AnimationModel implements AnimationOperation {
     if (nameMap.entrySet().isEmpty()) {
       return output;
     }
-    for (Map.Entry mapKey : nameMap.entrySet()) {
-      String name = (String) mapKey.getKey();
+    for (Map.Entry mapPair : nameMap.entrySet()) {
+      String name = (String) mapPair.getKey();
       output = output + "Shape " + name + " " + nameMap.get(name).getShapeName() + "\n";
       output = output + listOfMotionsToString(name, animation.get(nameMap.get(name)));
     }
     return output;
   }
 
+  @Override
+  public boolean checkValidAnimation() {
+    boolean result = true;
+    // If there is no motion, the animation is valid
+    if (animation.entrySet().isEmpty()) {
+      return true;
+    }
+    // Check whether the list of motions for each shape is valid
+    // and combine all results
+    // SORT if needed
+    for (Map.Entry mapPair : animation.entrySet()) {
+      List<Motion> valueList = new ArrayList<>((List<Motion>) mapPair.getValue()); // a shallow copy
+//      if (valueList.isEmpty()) {
+//        result = result && true;
+//      }
+      // Check "teleport"
+      for (int i = 0; i < (valueList.size() - 1); i++) {
+        result = result && (valueList.get(i + 1).getStartTime() == valueList.get(i).getEndTime());
+      }
+    }
+    return result;
+  }
+
   private String listOfMotionsToString(String name, List<Motion> motions) {
+    if (!checkValidAnimation()) {
+      throw new IllegalStateException("The animation is invalid.");
+    }
     String result = "";
     for (Motion m : motions) {
       result = result + "motion " + name + " " + m.toString() + "\n";

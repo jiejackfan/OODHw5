@@ -62,4 +62,12 @@ public class Motion {
     return output;
   }
 
+  public int getStartTime() {
+    return startTime;
+  }
+
+  public int getEndTime() {
+    return endTime;
+  }
+
 }
