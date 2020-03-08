@@ -1,7 +1,6 @@
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -26,11 +25,11 @@ public class AnimationModel implements AnimationOperation {
     switch (shape.toLowerCase()) {
       case "rectangle":
         nameMap.put(name, new Rectangle());
-        animation.put(nameMap.get(name), new ArrayList<Motion>());
+        animation.put(nameMap.get(name), new ArrayList<>());
         break;
       case "oval":
         nameMap.put(name, new Oval());
-        animation.put(nameMap.get(name), new ArrayList<Motion>());
+        animation.put(nameMap.get(name), new ArrayList<>());
         break;
       // More shapes can be implemented here.
       default:
@@ -62,12 +61,24 @@ public class AnimationModel implements AnimationOperation {
 
   @Override
   public String toString() {
-    Iterator hmIterator = animation.entrySet().iterator();
-    while (hmIterator.hasNext()) {
-      // To be continued.
-
+    String output = "";
+    // If there is no shapes on the animation, print an empty string
+    if (nameMap.entrySet().isEmpty()) {
+      return output;
     }
-    // String output = String.join(" ", "motion", ...)
+    for (Map.Entry mapKey : nameMap.entrySet()) {
+      String name = (String) mapKey.getKey();
+      output = output + "Shape " + name + " " + nameMap.get(name).getShapeName() + "\n";
+      output = output + listOfMotionsToString(name, animation.get(nameMap.get(name)));
+    }
+    return output;
   }
-  return output;
+
+  private String listOfMotionsToString(String name, List<Motion> motions) {
+    String result = "";
+    for (Motion m : motions) {
+      result = result + "motion " + name + " " + m.toString() + "\n";
+    }
+    return result;
+  }
 }

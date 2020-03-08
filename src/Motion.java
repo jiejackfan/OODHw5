@@ -42,4 +42,24 @@ public class Motion {
     this.endColor = endColor;
   }
 
+  @Override
+  public String toString() {
+    String output;
+    output = String.join(" ", Integer.toString(startTime),
+            Double.toString(startPosition.getX()),
+            Double.toString(startPosition.getY()),
+            Double.toString(startWidth), Double.toString(startHeight),
+            Integer.toString(startColor.getRed()),
+            Integer.toString(startColor.getGreen()),
+            Integer.toString(startColor.getBlue()),
+            Integer.toString(endTime),
+            Double.toString(endPosition.getX()),
+            Double.toString(endPosition.getY()),
+            Double.toString(endWidth), Double.toString(endHeight),
+            Integer.toString(endColor.getRed()),
+            Integer.toString(endColor.getGreen()),
+            Integer.toString(endColor.getBlue()));
+    return output;
+  }
+
 }

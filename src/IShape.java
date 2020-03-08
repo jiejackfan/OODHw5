@@ -3,5 +3,6 @@
  */
 public interface IShape {
 
+  String getShapeName();
 
 }
