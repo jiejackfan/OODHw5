@@ -42,6 +42,21 @@ public class Motion {
     this.endColor = endColor;
   }
 
+  public Motion(Motion motion) {
+
+    this.startTime = motion.startTime;
+    this.startPosition = motion.startPosition;
+    this.startWidth = motion.startWidth;
+    this.startHeight = motion.startHeight;
+    this.startColor = motion.startColor;
+
+    this.endTime = motion.endTime;
+    this.endPosition = motion.endPosition;
+    this.endWidth = motion.endWidth;
+    this.endHeight = motion.endHeight;
+    this.endColor = motion.endColor;
+  }
+
   @Override
   public String toString() {
     String output;
@@ -68,6 +83,46 @@ public class Motion {
 
   public int getEndTime() {
     return endTime;
+  }
+
+  public Position2D getStartPosition() {
+    return this.startPosition;
+  }
+
+  public Position2D getEndPosition() {
+    return this.endPosition;
+  }
+
+  public double getStartWidth() {
+    return startWidth;
+  }
+
+  public double getEndWidth() {
+    return endWidth;
+  }
+
+  public double getStartHeight() {
+    return startHeight;
+  }
+
+  public double getEndHeight() {
+    return endHeight;
+  }
+
+  public Color getStartColor() {
+    return startColor;
+  }
+
+  public Color getEndColor() {
+    return endColor;
+  }
+
+  public void changeStartTime(int time) {
+    this.startTime = time;
+  }
+
+  public void changeEndTime(int time) {
+    this.endTime = time;
   }
 
 }
