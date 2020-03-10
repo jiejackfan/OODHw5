@@ -1,3 +1,4 @@
+import cs3500.excellence.hw5.AnimationOperation;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

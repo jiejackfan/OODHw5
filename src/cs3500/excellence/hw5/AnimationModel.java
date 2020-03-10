@@ -1,3 +1,5 @@
+package cs3500.excellence.hw5;
+
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -146,13 +148,6 @@ public class AnimationModel implements AnimationOperation {
       throw new IllegalArgumentException("The given shape is not in the animation.");
     }
 
-    /*
-    if (!(isTimeInListOfMotion(animation.get(nameMap.get(name)), startTime) &&
-            isTimeInListOfMotion(animation.get(nameMap.get(name)), endTime))) {
-      throw new IllegalArgumentException("Time not within the range.");
-    }
-    */
-
     List<Motion> listOfMotion = animation.get(nameMap.get(name));
 
     // start time must be less or equal to end time
@@ -195,7 +190,7 @@ public class AnimationModel implements AnimationOperation {
   }
 
   private Motion changeMotion(Motion tmpMotion, int time, boolean start) {
-    double ratio = (time - tmpMotion.getStartTime())
+    double ratio = (double)(time - tmpMotion.getStartTime())
             / (tmpMotion.getEndTime() - tmpMotion.getStartTime());
     Color color = new Color(
             (int) ratio * (tmpMotion.getEndColor().getRed() - tmpMotion.getStartColor().getRed())
@@ -216,7 +211,7 @@ public class AnimationModel implements AnimationOperation {
     double height = ratio * (tmpMotion.getEndHeight() - tmpMotion.getStartHeight())
             + tmpMotion.getStartHeight();
 
-    //if we are changing start time
+    //if we are changing start time, update the
     if (start == true) {
 
     }
@@ -230,6 +225,11 @@ public class AnimationModel implements AnimationOperation {
   private void changeStartingMotion(int startTime, List<Motion> listOfMotion) {
 
   }
+
+
+  private void changeEndingMotion(int endTime, List<Motion> listOfMotion) {
+  }
+
 
   @Override
   public void addMotion(String name, int startTime, int startX, int startY, double startWidth,

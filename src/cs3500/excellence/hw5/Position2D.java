@@ -1,3 +1,5 @@
+package cs3500.excellence.hw5;
+
 import java.util.Objects;
 
 public class Position2D {

@@ -1,3 +1,7 @@
+package cs3500.excellence.hw5;
+
+import cs3500.excellence.hw5.AShape;
+import cs3500.excellence.hw5.Position2D;
 import java.awt.*;
 
 public class Rectangle extends AShape {
