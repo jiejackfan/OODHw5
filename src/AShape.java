@@ -16,7 +16,7 @@ public abstract class AShape implements IShape {
     //
   }
 
-  public AShape(Color color, Position2D position, double width, double height, String shapeName) {
+  public AShape(Color color, Position2D position, double width, double height) {
     if (width <= 0 || height <= 0) {
       throw new IllegalArgumentException("The width and height must be positive");
     }
@@ -24,12 +24,32 @@ public abstract class AShape implements IShape {
     this.position = position;
     this.width = width;
     this.height = height;
-    this.shapeName = shapeName;
   }
+
+
+  //copy constructor
+  public AShape(AShape shape) {
+    this.color = shape.color;
+    this.position = shape.position;
+    this.width = shape.width;
+    this.height = shape.height;
+    this.shapeName = shape.shapeName;
+  }
+
+
+  @Override
+  public void changeAttributes(Color color, Position2D pos, double width, double height) {
+    this.color = color;
+    this.position = pos;
+    this.width = width;
+    this.height = height;
+  }
+
 
   @Override
   public String getShapeName() {
     return this.shapeName;
   }
+
 
 }

@@ -1,6 +1,12 @@
+import java.util.List;
+
 public interface AnimationOperation {
 
   void createShape(String shape, String name);
+
+  void removeShape(String name);
+
+  void removeMotion(String name, int startTime, int endTime);
 
   void addMotion(String name, int startTime, int startX, int startY, double startWidth,
                  double startHeight, int startColorR, int startColorB, int startColorG,
@@ -11,5 +17,7 @@ public interface AnimationOperation {
   String toString();
 
   boolean checkValidAnimation();
+
+  List<IShape> getAnimation(int time);
 
 }

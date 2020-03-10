@@ -7,8 +7,9 @@ public class Oval extends AShape {
     this.shapeName = "oval";
   }
 
-  public Oval(Color color, Position2D position, double width, double height, String shapeName) {
-    super(color, position, width, height, "oval");
+  public Oval(Color color, Position2D position, double width, double height) {
+    super(color, position, width, height);
+    this.shapeName = "oval";
   }
 
 }
