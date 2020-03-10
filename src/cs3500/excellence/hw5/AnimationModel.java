@@ -2,7 +2,6 @@ package cs3500.excellence.hw5;
 
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
@@ -106,17 +105,17 @@ public class AnimationModel implements AnimationOperation {
     throw new IllegalArgumentException("Should not reach this point.");
   }
 
-  private Motion findMutatableMotion(List<Motion> listOfMotion, int time) {
-    for (Motion tmpMotion : listOfMotion) {
-      int startTime = tmpMotion.getStartTime();
-      int endTime = tmpMotion.getEndTime();
-
-      if (time <= startTime && time >= endTime) {
-        return tmpMotion;
-      }
-    }
-    throw new IllegalArgumentException("Should not reach this point.");
-  }
+//  private Motion findMutatableMotion(List<Motion> listOfMotion, int time) {
+//    for (Motion tmpMotion : listOfMotion) {
+//      int startTime = tmpMotion.getStartTime();
+//      int endTime = tmpMotion.getEndTime();
+//
+//      if (time <= startTime && time >= endTime) {
+//        return tmpMotion;
+//      }
+//    }
+//    throw new IllegalArgumentException("Should not reach this point.");
+//  }
 
   @Override
   public void createShape(String shape, String name) {
@@ -149,7 +148,6 @@ public class AnimationModel implements AnimationOperation {
     }
     animation.remove(nameMap.get(name));
     nameMap.remove(name);
-
   }
 
   /*
@@ -248,15 +246,17 @@ public class AnimationModel implements AnimationOperation {
    */
 
 
-
   @Override
   public void addMotion(String name, int startTime, int startX, int startY, double startWidth,
-                        double startHeight, int startColorR, int startColorB, int startColorG,
+                        double startHeight, int startColorR, int startColorG, int startColorB,
                         int endTime, int endX, double endY, double endWidth,
-                        double endHeight, int endColorR,
-                        int endColorB, int endColorG) {
+                        double endHeight, int endColorR, int endColorG,
+                        int endColorB) {
     // Check whether the given parameters of color are valid, if they are valid, pass into the color
     // constructor, if not, throw an illegal argument exception.
+    if (!nameMap.containsKey(name)) {
+      throw new IllegalArgumentException("The name does not exist in current shapes.");
+    }
     if (startColorR < 0 || startColorR > 255 || endColorR < 0 || endColorR > 255
             || startColorG < 0 || startColorG > 255 || endColorG < 0 || endColorG > 255
             || startColorB < 0 || startColorB > 255 || endColorB < 0 || endColorB > 255) {
@@ -264,7 +264,8 @@ public class AnimationModel implements AnimationOperation {
     }
 
     // Other parameters are check when constructing the motion, and the parameters of position are
-    // checked in the position2D in the constructor of class position2D.
+    // checked in the posit
+    // ion2D in the constructor of class position2D.
     animation.get(nameMap.get(name)).add(
             new Motion(startTime, new Position2D(startX, startY), startWidth, startHeight,
                     new Color(startColorR, startColorG, startColorB), endTime,
@@ -288,12 +289,12 @@ public class AnimationModel implements AnimationOperation {
   }
 
   /**
-   * Checks whether a list of motion we from a particular shape from the input file (the map data structure) is valid.
+   * Checks whether a list of motion we from a particular shape from the input file (the map data
+   * structure) is valid.
    *
    * @return true if valid, false if not.
    */
-  @Override
-  public boolean checkValidAnimation(List<Motion> listOfMotion) {
+  private boolean checkValidAnimation(List<Motion> listOfMotion) {
     boolean result = true;
     // If there is no motion, the animation is valid
     if (animation.entrySet().isEmpty()) {
@@ -330,6 +331,7 @@ public class AnimationModel implements AnimationOperation {
       throw new IllegalStateException("There is teleportation or overlap in this shape, this "
           + "shape will be deleted.");
     }
+
     String result = "";
     for (Motion m : listOfMotion) {
       result = result + "motion " + name + " " + m.toString() + "\n";
