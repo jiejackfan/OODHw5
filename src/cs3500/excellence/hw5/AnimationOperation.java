@@ -8,7 +8,7 @@ public interface AnimationOperation {
 
   void removeShape(String name);
 
-  void removeMotion(String name, int startTime, int endTime);
+  //void removeMotion(String name, int startTime, int endTime);
 
   void addMotion(String name, int startTime, int startX, int startY, double startWidth,
                  double startHeight, int startColorR, int startColorB, int startColorG,
@@ -18,7 +18,7 @@ public interface AnimationOperation {
 
   String toString();
 
-  boolean checkValidAnimation();
+  boolean checkValidAnimation(List<Motion> lom);
 
   List<IShape> getAnimation(int time);
 

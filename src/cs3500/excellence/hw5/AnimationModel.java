@@ -2,9 +2,21 @@ package cs3500.excellence.hw5;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+class SortByStartTime implements Comparator<Motion>
+{
+  // Used for sorting in ascending order of
+  // start time
+  public int compare(Motion a, Motion b)
+  {
+    return a.getStartTime() - b.getEndTime();
+  }
+}
 
 public class AnimationModel implements AnimationOperation {
 
@@ -50,7 +62,7 @@ public class AnimationModel implements AnimationOperation {
   }
 
   private IShape buildShape(String shapeName, Motion tmpMotion, int time) {
-    double ratio = (time - tmpMotion.getStartTime())
+    double ratio = (double) (time - tmpMotion.getStartTime())
             / (tmpMotion.getEndTime() - tmpMotion.getStartTime());
     Color color = new Color(
             (int) ratio * (tmpMotion.getEndColor().getRed() - tmpMotion.getStartColor().getRed())
@@ -140,6 +152,7 @@ public class AnimationModel implements AnimationOperation {
 
   }
 
+  /*
   @Override
   public void removeMotion(String name, int startTime, int endTime) {
 
@@ -170,7 +183,9 @@ public class AnimationModel implements AnimationOperation {
       } else {
         throw new IllegalStateException("Can't remove time in middle of motion.");
       }
-    } else if (startTime > endTime) {
+    }
+
+    else if (startTime > endTime) {
       throw new IllegalStateException("Start time can't be larger than end time.");
     }
 
@@ -211,7 +226,7 @@ public class AnimationModel implements AnimationOperation {
     double height = ratio * (tmpMotion.getEndHeight() - tmpMotion.getStartHeight())
             + tmpMotion.getStartHeight();
 
-    //if we are changing start time, update the
+    //if we are changing start time, update the starting
     if (start == true) {
 
     }
@@ -223,12 +238,15 @@ public class AnimationModel implements AnimationOperation {
   }
 
   private void changeStartingMotion(int startTime, List<Motion> listOfMotion) {
-
+    changeMotion(listOfMotion.get(0), );
   }
 
 
   private void changeEndingMotion(int endTime, List<Motion> listOfMotion) {
+
   }
+   */
+
 
 
   @Override
@@ -269,35 +287,51 @@ public class AnimationModel implements AnimationOperation {
     return output;
   }
 
+  /**
+   * Checks whether a list of motion we from a particular shape from the input file (the map data structure) is valid.
+   *
+   * @return true if valid, false if not.
+   */
   @Override
-  public boolean checkValidAnimation() {
+  public boolean checkValidAnimation(List<Motion> listOfMotion) {
     boolean result = true;
     // If there is no motion, the animation is valid
     if (animation.entrySet().isEmpty()) {
       return true;
     }
+
     // Check whether the list of motions for each shape is valid
     // and combine all results
-    // SORT if needed
-    for (Map.Entry mapPair : animation.entrySet()) {
-      List<Motion> valueList = new ArrayList<>((List<Motion>) mapPair.getValue()); // a shallow copy
-//      if (valueList.isEmpty()) {
-//        result = result && true;
-//      }
-      // Check "teleport"
-      for (int i = 0; i < (valueList.size() - 1); i++) {
-        result = result && (valueList.get(i + 1).getStartTime() == valueList.get(i).getEndTime());
+    for (int i = 0; i < listOfMotion.size() - 2; i++) {
+
+      result = listOfMotion.get(i).getEndTime() == listOfMotion.get(i + 1).getStartTime();
+      result = result
+          && (listOfMotion.get(i).getEndColor().equals(listOfMotion.get(i+1).getStartColor()));
+      result = result
+          && (listOfMotion.get(i).getEndHeight() == listOfMotion.get(i+1).getStartHeight());
+      result = result
+          && (listOfMotion.get(i).getEndWidth() == listOfMotion.get(i+1).getStartWidth());
+      result = result
+          && (listOfMotion.get(i).getEndPosition() == listOfMotion.get(i+1).getStartPosition());
+
+      // If there is a mismatch, delete the shape and throw new illegal argument.
+      if (!result) {
+        break;
       }
     }
     return result;
   }
 
-  private String listOfMotionsToString(String name, List<Motion> motions) {
-    if (!checkValidAnimation()) {
-      throw new IllegalStateException("The animation is invalid.");
+  private String listOfMotionsToString(String name, List<Motion> listOfMotion) {
+
+    listOfMotion.sort(new SortByStartTime());
+
+    if (!checkValidAnimation(listOfMotion)) {
+      throw new IllegalStateException("There is teleportation or overlap in this shape, this "
+          + "shape will be deleted.");
     }
     String result = "";
-    for (Motion m : motions) {
+    for (Motion m : listOfMotion) {
       result = result + "motion " + name + " " + m.toString() + "\n";
     }
     return result;
