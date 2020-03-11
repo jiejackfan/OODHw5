@@ -5,8 +5,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cs3500/excellence/hw5/AShape.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/excellence/hw5/AShape.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cs3500/excellence/hw5/AnimationModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/excellence/hw5/AnimationModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/excellence/hw5/AnimationOperation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/excellence/hw5/AnimationOperation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/excellence/hw5/IShape.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/excellence/hw5/IShape.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/AnimationModelTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/AnimationModelTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -50,51 +48,52 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
-  <component name="RunManager" selected="JUnit.AnimationModelTest">
-    <configuration name="AnimationModelTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.AnimationModelTest.testGetAnimationAtValidAtTime6OnlyRectangle">
+    <configuration name="AnimationModelTest.testGetAnimationAtValidAtTime11HaveBothShapes" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="hw5" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="AnimationModelTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AnimationModelTest.testGetAnimationAtInvalidTime" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="hw5" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="AnimationModelTest" />
-      <option name="METHOD_NAME" value="testGetAnimationAtInvalidTime" />
+      <option name="METHOD_NAME" value="testGetAnimationAtValidAtTime11HaveBothShapes" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AnimationModelTest.testGetAnimationAtValidTime1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AnimationModelTest.testGetAnimationAtValidAtTime1NoOval" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="hw5" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="AnimationModelTest" />
-      <option name="METHOD_NAME" value="testGetAnimationAtValidTime1" />
+      <option name="METHOD_NAME" value="testGetAnimationAtValidAtTime1NoOval" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AnimationModelTest.testSameShapeSameMotionsDifferentNames" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AnimationModelTest.testGetAnimationAtValidAtTime21NoRectangle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="hw5" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="AnimationModelTest" />
-      <option name="METHOD_NAME" value="testSameShapeSameMotionsDifferentNames" />
+      <option name="METHOD_NAME" value="testGetAnimationAtValidAtTime21NoRectangle" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AnimationModelTest.testShapesUnorderedMotionsToString" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AnimationModelTest.testGetAnimationAtValidAtTime6" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="hw5" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="AnimationModelTest" />
-      <option name="METHOD_NAME" value="testShapesUnorderedMotionsToString" />
+      <option name="METHOD_NAME" value="testGetAnimationAtValidAtTime6" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AnimationModelTest.testGetAnimationAtValidAtTime6OnlyRectangle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="hw5" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="AnimationModelTest" />
+      <option name="METHOD_NAME" value="testGetAnimationAtValidAtTime6OnlyRectangle" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -102,11 +101,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.AnimationModelTest" />
-        <item itemvalue="JUnit.AnimationModelTest.testGetAnimationAtValidTime1" />
-        <item itemvalue="JUnit.AnimationModelTest.testGetAnimationAtInvalidTime" />
-        <item itemvalue="JUnit.AnimationModelTest.testSameShapeSameMotionsDifferentNames" />
-        <item itemvalue="JUnit.AnimationModelTest.testShapesUnorderedMotionsToString" />
+        <item itemvalue="JUnit.AnimationModelTest.testGetAnimationAtValidAtTime6OnlyRectangle" />
+        <item itemvalue="JUnit.AnimationModelTest.testGetAnimationAtValidAtTime11HaveBothShapes" />
+        <item itemvalue="JUnit.AnimationModelTest.testGetAnimationAtValidAtTime6" />
+        <item itemvalue="JUnit.AnimationModelTest.testGetAnimationAtValidAtTime21NoRectangle" />
+        <item itemvalue="JUnit.AnimationModelTest.testGetAnimationAtValidAtTime1NoOval" />
       </list>
     </recent_temporary>
   </component>
@@ -154,7 +153,14 @@
       <option name="project" value="LOCAL" />
       <updated>1583883762042</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Added tests for removeShape() and toString() and fixed some bugs.">
+      <created>1583902388810</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1583902388810</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -162,7 +168,8 @@
     <MESSAGE value="Added toString() methods." />
     <MESSAGE value="Added checkValidAnimation() method." />
     <MESSAGE value="Added tests for CreateShape() and AddMotion()." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added tests for CreateShape() and AddMotion()." />
+    <MESSAGE value="Added tests for removeShape() and toString() and fixed some bugs." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added tests for removeShape() and toString() and fixed some bugs." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -172,56 +179,64 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="361" y="75" key="#Project_Structure/0.0.1536.824@0.0.1536.824" timestamp="1582836539245" />
-    <state x="100" y="100" width="1240" height="700" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1583900087882">
+    <state x="100" y="100" width="1240" height="700" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1583964444783">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="100" y="100" width="1240" height="700" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.0.1440.900@0.0.1440.900" timestamp="1583900087882" />
+    <state x="100" y="100" width="1240" height="700" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.0.1440.900@0.0.1440.900" timestamp="1583964444783" />
     <state x="100" y="100" width="1240" height="700" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.23.1440.877@0.23.1440.877" timestamp="1583893323230" />
     <state x="489" y="101" key="#com.intellij.ide.util.MemberChooser" timestamp="1583797289017">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="489" y="101" key="#com.intellij.ide.util.MemberChooser/0.0.1440.900@0.0.1440.900" timestamp="1583797289017" />
-    <state x="270" y="0" width="893" height="877" key="CommitChangelistDialog2" timestamp="1583902342356">
+    <state x="270" y="0" width="893" height="877" key="CommitChangelistDialog2" timestamp="1583965366733">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="270" y="0" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1583902342356" />
+    <state x="270" y="0" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1583965366733" />
     <state x="270" y="23" width="893" height="877" key="CommitChangelistDialog2/0.23.1440.877@0.23.1440.877" timestamp="1583705899616" />
     <state x="549" y="171" key="FileChooserDialogImpl" timestamp="1583859315583">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="171" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1583859315583" />
-    <state width="1388" height="174" key="GridCell.Tab.0.bottom" timestamp="1583902300144">
+    <state width="1388" height="93" key="GridCell.Tab.0.bottom" timestamp="1583965366830">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1388" height="174" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1583902300144" />
-    <state width="1388" height="174" key="GridCell.Tab.0.center" timestamp="1583902300141">
+    <state width="1388" height="93" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1583965366830" />
+    <state width="1388" height="93" key="GridCell.Tab.0.center" timestamp="1583965366829">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1388" height="174" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1583902300141" />
-    <state width="1388" height="174" key="GridCell.Tab.0.left" timestamp="1583902300139">
+    <state width="1388" height="93" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1583965366829" />
+    <state width="1388" height="93" key="GridCell.Tab.0.left" timestamp="1583965366828">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1388" height="174" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1583902300139" />
-    <state width="1388" height="174" key="GridCell.Tab.0.right" timestamp="1583902300142">
+    <state width="1388" height="93" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1583965366828" />
+    <state width="1388" height="93" key="GridCell.Tab.0.right" timestamp="1583965366830">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1388" height="174" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1583902300142" />
-    <state width="1388" height="359" key="GridCell.Tab.1.bottom" timestamp="1583901774612">
+    <state width="1388" height="93" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1583965366830" />
+    <state width="1388" height="3" key="GridCell.Tab.1.bottom" timestamp="1583964945624">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1388" height="359" key="GridCell.Tab.1.bottom/0.0.1440.900@0.0.1440.900" timestamp="1583901774612" />
-    <state width="1388" height="359" key="GridCell.Tab.1.center" timestamp="1583901774610">
+    <state width="1388" height="3" key="GridCell.Tab.1.bottom/0.0.1440.900@0.0.1440.900" timestamp="1583964945624" />
+    <state width="1388" height="3" key="GridCell.Tab.1.center" timestamp="1583964945620">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1388" height="359" key="GridCell.Tab.1.center/0.0.1440.900@0.0.1440.900" timestamp="1583901774610" />
-    <state width="1388" height="359" key="GridCell.Tab.1.left" timestamp="1583901774609">
+    <state width="1388" height="3" key="GridCell.Tab.1.center/0.0.1440.900@0.0.1440.900" timestamp="1583964945620" />
+    <state width="1388" height="3" key="GridCell.Tab.1.left" timestamp="1583964945618">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1388" height="359" key="GridCell.Tab.1.left/0.0.1440.900@0.0.1440.900" timestamp="1583901774609" />
-    <state width="1388" height="359" key="GridCell.Tab.1.right" timestamp="1583901774611">
+    <state width="1388" height="3" key="GridCell.Tab.1.left/0.0.1440.900@0.0.1440.900" timestamp="1583964945618" />
+    <state width="1388" height="3" key="GridCell.Tab.1.right" timestamp="1583964945623">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1388" height="359" key="GridCell.Tab.1.right/0.0.1440.900@0.0.1440.900" timestamp="1583901774611" />
+    <state width="1388" height="3" key="GridCell.Tab.1.right/0.0.1440.900@0.0.1440.900" timestamp="1583964945623" />
+    <state x="144" y="79" key="MergeDialog" timestamp="1583960961871">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="144" y="79" key="MergeDialog/0.0.1440.900@0.0.1440.900" timestamp="1583960961871" />
+    <state x="362" y="106" key="MultipleFileMergeDialog" timestamp="1583960964262">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="362" y="106" key="MultipleFileMergeDialog/0.0.1440.900@0.0.1440.900" timestamp="1583960964262" />
     <state x="279" y="58" key="SettingsEditor" timestamp="1582836565019">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -239,10 +254,10 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="264" y="334" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1440.900@0.0.1440.900" timestamp="1582952219641" />
-    <state x="463" y="358" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1583902306504">
+    <state x="463" y="358" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1583965338751">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="463" y="358" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1440.900@0.0.1440.900" timestamp="1583902306504" />
+    <state x="463" y="358" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1440.900@0.0.1440.900" timestamp="1583965338751" />
     <state x="209" y="40" key="new project wizard" timestamp="1582836491587">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -260,5 +275,16 @@
     </state>
     <state x="404" y="158" width="838" height="741" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1583792463916" />
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1582837140417" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/cs3500/excellence/hw5/AnimationModel.java</url>
+          <line>108</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
