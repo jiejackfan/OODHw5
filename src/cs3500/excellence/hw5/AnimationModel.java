@@ -11,12 +11,10 @@ public class AnimationModel implements AnimationOperation {
 
   private final Map<String, IShape> nameMap;
   private final Map<IShape, List<Motion>> animation;
-  //private final List<IShape> currentAnimation;
 
   public AnimationModel() {
     this.nameMap = new HashMap<>();
     this.animation = new HashMap<>();
-    //this.currentAnimation = new ArrayList<>();
   }
 
   @Override
@@ -95,8 +93,6 @@ public class AnimationModel implements AnimationOperation {
       if (isTimeInListOfMotion((List<Motion>) mapPair.getValue(), time)) {
         tmpMotion = findMotion((List<Motion>) mapPair.getValue(), time);
         shapesAtTime.add(buildShape(tmpShape.getShapeName(), tmpMotion, time));
-      } else {
-        shapesAtTime.add(buildEmptyShape(tmpShape.getShapeName()));
       }
     }
     return shapesAtTime;
@@ -109,30 +105,18 @@ public class AnimationModel implements AnimationOperation {
     return (time >= startTime && time <= endTime);
   }
 
-  private IShape buildEmptyShape(String shapeName) {
-    switch (shapeName) {
-      case "rectangle":
-        return new Rectangle();
-      case "oval":
-        return new Oval();
-      // More shapes can be implemented here.
-      default:
-        throw new IllegalArgumentException("Please provide a valid shape name.");
-    }
-  }
-
   private IShape buildShape(String shapeName, Motion tmpMotion, int time) {
     double ratio = (double) (time - tmpMotion.getStartTime())
             / (tmpMotion.getEndTime() - tmpMotion.getStartTime());
     Color color = new Color(
-            (int) ratio * (tmpMotion.getEndColor().getRed() - tmpMotion.getStartColor().getRed())
-                    + tmpMotion.getStartColor().getRed(),
-            (int) ratio * (tmpMotion.getEndColor().getGreen()
+            (int) (ratio * (tmpMotion.getEndColor().getRed() - tmpMotion.getStartColor().getRed())
+                    + tmpMotion.getStartColor().getRed()),
+            (int) (ratio * (tmpMotion.getEndColor().getGreen()
                     - tmpMotion.getStartColor().getGreen())
-                    + tmpMotion.getStartColor().getGreen(),
-            (int) ratio * (tmpMotion.getEndColor().getBlue()
+                    + tmpMotion.getStartColor().getGreen()),
+            (int) (ratio * (tmpMotion.getEndColor().getBlue()
                     - tmpMotion.getStartColor().getBlue())
-                    + tmpMotion.getStartColor().getBlue());
+                    + tmpMotion.getStartColor().getBlue()));
     Position2D position = new Position2D(
             ratio * (tmpMotion.getEndPosition().getX() - tmpMotion.getStartPosition().getX())
                     + tmpMotion.getStartPosition().getX(),
@@ -166,110 +150,6 @@ public class AnimationModel implements AnimationOperation {
     throw new IllegalArgumentException("Should not reach this point.");
   }
 
-//  private Motion findMutatableMotion(List<Motion> listOfMotion, int time) {
-//    for (Motion tmpMotion : listOfMotion) {
-//      int startTime = tmpMotion.getStartTime();
-//      int endTime = tmpMotion.getEndTime();
-//
-//      if (time <= startTime && time >= endTime) {
-//        return tmpMotion;
-//      }
-//    }
-//    throw new IllegalArgumentException("Should not reach this point.");
-//  }
-
-  /*
-  @Override
-  public void removeMotion(String name, int startTime, int endTime) {
-
-
-    if (!nameMap.containsKey(name)) {
-      throw new IllegalArgumentException("The given shape is not in the animation.");
-    }
-
-    List<Motion> listOfMotion = animation.get(nameMap.get(name));
-
-    // start time must be less or equal to end time
-    if (startTime == endTime) {
-      if (startTime == listOfMotion.get(0).getStartTime()) {
-        if (listOfMotion.get(0).getStartTime() == listOfMotion.get(0).getEndTime()) {
-          listOfMotion.remove(0);
-        } else {
-          //listOfMotion.get(0).changeStartTime(startTime + 1);
-          changeStartingMotion(startTime, listOfMotion);
-        }
-      } else if (startTime == listOfMotion.get(listOfMotion.size() - 1).getEndTime()) {
-        if (listOfMotion.get(listOfMotion.size() - 1).getStartTime()
-                == listOfMotion.get(listOfMotion.size() - 1).getEndTime()) {
-          listOfMotion.remove(listOfMotion.size() - 1);
-        } else {
-          //listOfMotion.get(listOfMotion.size() - 1).changeEndTime(endTime - 1);
-          changeEndingMotion(endTime, listOfMotion);
-        }
-      } else {
-        throw new IllegalStateException("Can't remove time in middle of motion.");
-      }
-    }
-
-    else if (startTime > endTime) {
-      throw new IllegalStateException("Start time can't be larger than end time.");
-    }
-
-    //if we want to remove from beginning
-    else if (startTime <= listOfMotion.get(0).getStartTime()) {
-      findMutatableMotion(listOfMotion, endTime).changeStartTime();
-      changeStartingMotion();
-    }
-
-    //if we want to remove from end
-    else if (startTime > listOfMotion.get(0).getStartTime()
-            && endTime >= listOfMotion.get(listOfMotion.size() - 1).getEndTime()) {
-      changeEndingMotion();
-    }
-
-
-  }
-
-  private Motion changeMotion(Motion tmpMotion, int time, boolean start) {
-    double ratio = (double)(time - tmpMotion.getStartTime())
-            / (tmpMotion.getEndTime() - tmpMotion.getStartTime());
-    Color color = new Color(
-            (int) ratio * (tmpMotion.getEndColor().getRed() - tmpMotion.getStartColor().getRed())
-                    + tmpMotion.getStartColor().getRed(),
-            (int) ratio * (tmpMotion.getEndColor().getGreen()
-                    - tmpMotion.getStartColor().getGreen())
-                    + tmpMotion.getStartColor().getGreen(),
-            (int) ratio * (tmpMotion.getEndColor().getBlue()
-                    - tmpMotion.getStartColor().getBlue())
-                    + tmpMotion.getStartColor().getBlue());
-    Position2D position = new Position2D(
-            ratio * (tmpMotion.getEndPosition().getX() - tmpMotion.getStartPosition().getX())
-                    + tmpMotion.getStartPosition().getX(),
-            ratio * (tmpMotion.getEndPosition().getY() - tmpMotion.getStartPosition().getY())
-                    + tmpMotion.getStartPosition().getY());
-    double width = ratio * (tmpMotion.getEndWidth() - tmpMotion.getStartWidth())
-            + tmpMotion.getStartWidth();
-    double height = ratio * (tmpMotion.getEndHeight() - tmpMotion.getStartHeight())
-            + tmpMotion.getStartHeight();
-
-    //if we are changing start time, update the starting
-    if (start == true) {
-
-    }
-
-    //if we are changing end time
-    else if (start == false) {
-
-    }
-  }
-
-  private void changeStartingMotion(int startTime, List<Motion> listOfMotion) {
-    changeMotion(listOfMotion.get(0), );
-  }
-  private void changeEndingMotion(int endTime, List<Motion> listOfMotion) {
-
-  }
-   */
 
   @Override
   public String toString() {

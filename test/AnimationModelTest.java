@@ -1,9 +1,18 @@
 import org.junit.Test;
 
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
+
 import cs3500.excellence.hw5.AnimationModel;
 import cs3500.excellence.hw5.AnimationOperation;
+import cs3500.excellence.hw5.IShape;
+import cs3500.excellence.hw5.Oval;
+import cs3500.excellence.hw5.Position2D;
+import cs3500.excellence.hw5.Rectangle;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class AnimationModelTest {
 
@@ -490,22 +499,95 @@ public class AnimationModelTest {
     animationOne.getAnimation(0);
   }
 
-//  @Test
-//  public void testGetAnimationAtValidTime1() {
-//    animationOne.createShape("rectangle", "R");
-//    animationOne.createShape("oval", "O");
-//    // R - from 1: at (0,0) size 10*10 with rgb(0,0,0)
-//    //     to 11: at (10,10) size 20*20 with rgb(100,100,100)
-//    animationOne.addMotion("R", 1, 0, 0, 10,
-//            10, 255, 0, 0, 10,
-//            10, 10, 20, 20, 100, 100, 100);
-//    // O - from 11: at (0,0) size 10*10 with rgb(0,0,0)
-//    //     to 21: at (10,10) size 20*20 with rgb(100,100,100)
-//    animationOne.addMotion("O", 1, 0, 0, 10,
-//            10, 255, 0, 0, 10,
-//            10, 10, 20, 20, 100, 100, 100);
-//    assertEquals( new ArrayList<>(), animationOne.getAnimation(1));
-//  }
+  @Test
+  public void testShapesEqual() {
+    IShape r1 = new Rectangle(new Color(0, 0, 0), new Position2D(0, 0), 10, 10);
+    IShape r2 = new Rectangle(new Color(0, 0, 0), new Position2D(0, 0), 10, 10);
+    assertTrue(r1.equals(r2));
+  }
+
+  @Test
+  public void testGetAnimationAtValidAtTime1NoOval() {
+    animationOne.createShape("rectangle", "R");
+    animationOne.createShape("oval", "O");
+    // R - from 1: at (0,0) size 10*10 with rgb(0,0,0)
+    //     to 11: at (10,10) size 20*20 with rgb(100,100,100)
+    animationOne.addMotion("R", 1, 0, 0, 10,
+            10, 0, 0, 0, 11,
+            10, 10, 20, 20, 100, 100, 100);
+    // O - from 11: at (0,0) size 10*10 with rgb(0,0,0)
+    //     to 21: at (10,10) size 20*20 with rgb(100,100,100)
+    animationOne.addMotion("O", 21, 0, 0, 10,
+            10, 0, 0, 0, 21,
+            10, 10, 20, 20, 100, 100, 100);
+    List<IShape> currentShape = new ArrayList<>();
+    currentShape.add(
+            new Rectangle(new Color(0, 0, 0), new Position2D(0, 0), 10, 10));
+    assertEquals(currentShape.get(0), animationOne.getAnimation(1).get(0));
+  }
+
+  @Test
+  public void testGetAnimationAtValidAtTime6OnlyRectangle() {
+    animationOne.createShape("rectangle", "R");
+    animationOne.createShape("oval", "O");
+    // R - from 1: at (0,0) size 10*10 with rgb(0,0,0)
+    //     to 11: at (10,10) size 20*20 with rgb(100,100,100)
+    animationOne.addMotion("R", 1, 0, 0, 10,
+            10, 0, 0, 0, 11,
+            10, 10, 20, 20, 100, 100, 100);
+    // O - from 11: at (0,0) size 10*10 with rgb(0,0,0)
+    //     to 21: at (10,10) size 20*20 with rgb(100,100,100)
+    animationOne.addMotion("O", 11, 0, 0, 10,
+            10, 0, 0, 0, 21,
+            10, 10, 20, 20, 100, 100, 100);
+    List<IShape> currentShape = new ArrayList<>();
+    currentShape.add(
+            new Rectangle(new Color(50, 50, 50), new Position2D(5, 5), 15.0, 15.0));
+    assertEquals(currentShape.get(0), animationOne.getAnimation(6).get(0));
+  }
+
+  @Test
+  public void testGetAnimationAtValidAtTime11HaveBothShapes() {
+    animationOne.createShape("rectangle", "R");
+    animationOne.createShape("oval", "O");
+    // R - from 1: at (0,0) size 10*10 with rgb(0,0,0)
+    //     to 11: at (10,10) size 20*20 with rgb(100,100,100)
+    animationOne.addMotion("R", 1, 0, 0, 10,
+            10, 0, 0, 0, 11,
+            10, 10, 20, 20, 100, 100, 100);
+    // O - from 11: at (0,0) size 10*10 with rgb(0,0,0)
+    //     to 21: at (10,10) size 20*20 with rgb(100,100,100)
+    animationOne.addMotion("O", 11, 0, 0, 10,
+            10, 0, 0, 0, 21,
+            10, 10, 20, 20, 100, 100, 100);
+    List<IShape> currentShape = new ArrayList<>();
+    currentShape.add(
+            new Rectangle(new Color(100, 100, 100), new Position2D(10, 10), 20, 20));
+    currentShape.add(
+            new Oval(new Color(0, 0, 0), new Position2D(0, 0), 10, 10));
+    assertEquals(currentShape.get(0), animationOne.getAnimation(11).get(0));
+    assertEquals(currentShape.get(1), animationOne.getAnimation(11).get(1));
+  }
+
+  @Test
+  public void testGetAnimationAtValidAtTime21NoRectangle() {
+    animationOne.createShape("rectangle", "R");
+    animationOne.createShape("oval", "O");
+    // R - from 1: at (0,0) size 10*10 with rgb(0,0,0)
+    //     to 11: at (10,10) size 20*20 with rgb(100,100,100)
+    animationOne.addMotion("R", 1, 0, 0, 10,
+            10, 0, 0, 0, 11,
+            10, 10, 20, 20, 100, 100, 100);
+    // O - from 11: at (0,0) size 10*10 with rgb(0,0,0)
+    //     to 21: at (10,10) size 20*20 with rgb(100,100,100)
+    animationOne.addMotion("O", 11, 0, 0, 10,
+            10, 0, 0, 0, 21,
+            10, 10, 20, 20, 100, 100, 100);
+    List<IShape> currentShape = new ArrayList<>();
+    currentShape.add(
+            new Oval(new Color(100, 100, 100), new Position2D(10, 10), 20, 20));
+    assertEquals(currentShape.get(0), animationOne.getAnimation(21).get(0));
+  }
 
 
 }

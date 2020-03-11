@@ -59,11 +59,11 @@ public abstract class AShape implements IShape {
       if (!(that instanceof AShape)) {
         return false;
       }
-      return (this.color.equals(((AShape)that).color))
-          && (this.position.equals(((AShape)that).position))
-          && (this.width == ((AShape)(that)).width)
-          && (this.height == ((AShape)(that)).height)
-          && (this.shapeName.equals(((AShape) (that)).shapeName));
+      return (this.color.equals(((AShape) that).color))
+              && (this.position.equals(((AShape) that).position))
+              && (Math.abs(this.width - ((AShape) (that)).width) < 0.1)
+              && (Math.abs(this.height - ((AShape) (that)).height) < 0.1)
+              && (this.shapeName.equals(((AShape) (that)).shapeName));
     }
   }
 
