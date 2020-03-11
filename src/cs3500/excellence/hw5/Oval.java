@@ -21,10 +21,10 @@ public class Oval extends AShape {
   /**
    * Constuctor 2 of this oval shape. Create a abstract shape that holds all characteristic of the
    *  oval shape and change the shapeName variable.
-   * @param color
-   * @param position
-   * @param width
-   * @param height
+   * @param color is color of oval at initialization.
+   * @param position is position of oval at initialization.
+   * @param width is width of oval at initialization.
+   * @param height is height of oval at initialization.
    */
   public Oval(Color color, Position2D position, double width, double height) {
     super(color, position, width, height);

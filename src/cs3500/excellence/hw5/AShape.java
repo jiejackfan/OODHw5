@@ -15,10 +15,22 @@ public abstract class AShape implements IShape {
   protected double height;
   protected String shapeName;
 
+  /**
+   * Constructor of abstract shape that does not conduct assignment. This will be used when the
+   * the system creates a shape without a list of motions.
+   */
   public AShape() {
     //
   }
 
+  /**
+   * Constructor of abstract shape that conducts assignment. This will be used if system creates a
+   *  shape with initialization values.
+   * @param color value of the shape that should be initialized.
+   * @param position value of the shape that should be initialized.
+   * @param width value of the shape that should be initialized.
+   * @param height value of the shape that should be initialized.
+   */
   public AShape(Color color, Position2D position, double width, double height) {
     if (width <= 0 || height <= 0) {
       throw new IllegalArgumentException("The width and height must be positive");
@@ -30,7 +42,10 @@ public abstract class AShape implements IShape {
   }
 
 
-  //copy constructor
+  /**
+   * Copy constructor of abstract shape so the user can make a copy of another shape.
+   * @param shape the user wants to make a copy of.
+   */
   public AShape(AShape shape) {
     this.color = shape.color;
     this.position = shape.position;

@@ -7,8 +7,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Implementation of the animation operation interface.
+ */
 public class AnimationModel implements AnimationOperation {
 
+  /**
+   * This final hash map structure will store the user given name as the key and the key's
+   * corresponding names as shapes.
+   */
   private final Map<String, IShape> nameMap;
   private final Map<IShape, List<Motion>> animation;
 

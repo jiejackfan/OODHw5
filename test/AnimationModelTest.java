@@ -14,6 +14,12 @@ import cs3500.excellence.hw5.Rectangle;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+/**
+ * Test class for our animation model. Verify that our model can create shapes and add each shape's
+ *  list of motions. Also verify the model can remove shape and list of motions. Lastly, the test
+ *  should prove the model can correctly print out a string version of the entire animation and
+ *  can create a list of shapes that contains shapes with its characteristics at a certain time.
+ */
 public class AnimationModelTest {
 
   AnimationOperation animationOne = new AnimationModel();
@@ -305,7 +311,8 @@ public class AnimationModelTest {
             + "motion R 10 200.0 200.0 50.0 100.0 255 0 0 50 300.0 300.0 50.0 100.0 255 0 0\n"
             + "Shape O oval\n"
             + "motion O 6 440.0 70.0 120.0 60.0 0 0 255 20 440.0 70.0 120.0 60.0 0 0 255\n"
-            + "motion O 20 440.0 70.0 120.0 60.0 0 0 255 50 440.0 250.0 120.0 60.0 0 0 255\n", animationOne.toString());
+            + "motion O 20 440.0 70.0 120.0 60.0 0 0 255 50 440.0 250.0 120.0 60.0 0 0 255\n",
+        animationOne.toString());
   }
 
   /**
@@ -377,7 +384,8 @@ public class AnimationModelTest {
             + "motion R 10 200.0 200.0 50.0 100.0 255 0 0 50 300.0 300.0 50.0 100.0 255 0 0\n"
             + "Shape O oval\n"
             + "motion O 6 440.0 70.0 120.0 60.0 0 0 255 20 440.0 70.0 120.0 60.0 0 0 255\n"
-            + "motion O 20 440.0 70.0 120.0 60.0 0 0 255 50 440.0 250.0 120.0 60.0 0 0 255\n", animationOne.toString());
+            + "motion O 20 440.0 70.0 120.0 60.0 0 0 255 50 440.0 250.0 120.0 60.0 0 0 255\n",
+        animationOne.toString());
   }
 
   /**

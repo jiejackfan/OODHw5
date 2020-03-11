@@ -24,10 +24,10 @@ public class Rectangle extends AShape {
    * Constructor to a rectangle that assigns the "rectangle: to the shapeName variable and also
    * assign some characteristics to this shape and store all of these variable to the abstract
    * class.
-   * @param color
-   * @param position
-   * @param width
-   * @param height
+   * @param color is color of rectangle at initialization.
+   * @param position is position of rectangle at initialization.
+   * @param width is width of rectangle at initialization.
+   * @param height is height of rectangle at initialization.
    */
   public Rectangle(Color color, Position2D position, double width, double height) {
     super(color, position, width, height);
