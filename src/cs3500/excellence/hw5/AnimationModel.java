@@ -150,6 +150,7 @@ public class AnimationModel implements AnimationOperation {
     throw new IllegalArgumentException("Should not reach this point.");
   }
 
+
   @Override
   public String toString() {
     String output = "";
@@ -163,6 +164,23 @@ public class AnimationModel implements AnimationOperation {
       output = output + listOfMotionsToString(name, animation.get(nameMap.get(name)));
     }
     return output;
+  }
+
+
+  private String listOfMotionsToString(String name, List<Motion> listOfMotion) {
+
+    listOfMotion.sort(new SortByStartTime());
+
+    if (!checkValidAnimation(listOfMotion)) {
+      throw new IllegalStateException("There is teleportation or overlap in this shape, this "
+          + "shape will be deleted.");
+    }
+
+    String result = "";
+    for (Motion m : listOfMotion) {
+      result = result + "motion " + name + " " + m.toString() + "\n";
+    }
+    return result;
   }
 
   /**
@@ -199,23 +217,31 @@ public class AnimationModel implements AnimationOperation {
     return result;
   }
 
-  private String listOfMotionsToString(String name, List<Motion> listOfMotion) {
+  @Override
+  public void removeMotion(String name, int index) {
+    // Check if the name of the shape we want to remove actually exists
+    if (!nameMap.containsKey(name)) {
+      throw new IllegalArgumentException("The shape you want to remove does not exist.");
+    }
+    IShape tmpShape = nameMap.get(name);
 
-    listOfMotion.sort(new SortByStartTime());
-
-    if (!checkValidAnimation(listOfMotion)) {
-      throw new IllegalStateException("There is teleportation or overlap in this shape, this "
-              + "shape will be deleted.");
+    // Check if the index of the shape you want to remove is either the first or the last. If the
+    //  index is not first or last, throw illegal argument.
+    if (index != 0 && index != (animation.get(tmpShape).size() - 1)) {
+      throw new IllegalArgumentException("The motion is not the first or the last in the list, "
+          + "can't be remove as of right now.");
     }
 
-    String result = "";
-    for (Motion m : listOfMotion) {
-      result = result + "motion " + name + " " + m.toString() + "\n";
-    }
-    return result;
+    List<Motion> tmpListOfMotion = animation.get(tmpShape);
+    tmpListOfMotion.remove(index);
   }
 
-  class SortByStartTime implements Comparator<Motion> {
+
+  /**
+   * This is a comparator class that we will use when trying to sort a list of motion based on its
+   *  start time.
+   */
+  static class SortByStartTime implements Comparator<Motion> {
     // Used for sorting in ascending order of
     // start time
     public int compare(Motion a, Motion b) {
