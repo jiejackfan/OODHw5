@@ -14,11 +14,20 @@ public class AnimationModel implements AnimationOperation {
 
   /**
    * This final hash map structure will store the user given name as the key and the key's
-   * corresponding names as shapes.
+   * corresponding shapes as value.
    */
   private final Map<String, IShape> nameMap;
+
+  /**
+   * This final hash map structure will store the entire animation.
+   * key: shape.
+   * value: the shape's list of motions.
+   */
   private final Map<IShape, List<Motion>> animation;
 
+  /**
+   * Constructor for model, initialize two empty hash maps.
+   */
   public AnimationModel() {
     this.nameMap = new HashMap<>();
     this.animation = new HashMap<>();
@@ -83,80 +92,6 @@ public class AnimationModel implements AnimationOperation {
                     new Color(endColorR, endColorG, endColorB)));
   }
 
-  @Override
-  public List<IShape> getAnimation(int time) {
-
-    List<IShape> shapesAtTime = new ArrayList<>();
-
-    if (time < 1) {
-      throw new IllegalArgumentException("Invalid time.");
-    }
-
-    //go through all shapes in map, add to shapeAtTime if we find a shape that have motion at the
-    //  exact time
-    for (Map.Entry mapPair : animation.entrySet()) {
-      IShape tmpShape = (IShape) mapPair.getKey();
-      Motion tmpMotion;
-      if (isTimeInListOfMotion((List<Motion>) mapPair.getValue(), time)) {
-        tmpMotion = findMotion((List<Motion>) mapPair.getValue(), time);
-        shapesAtTime.add(buildShape(tmpShape.getShapeName(), tmpMotion, time));
-      }
-    }
-    return shapesAtTime;
-  }
-
-  private boolean isTimeInListOfMotion(List<Motion> listOfMotion, int time) {
-    int startTime = listOfMotion.get(0).getStartTime();
-    int endTime = listOfMotion.get(listOfMotion.size() - 1).getEndTime();
-
-    return (time >= startTime && time <= endTime);
-  }
-
-  private IShape buildShape(String shapeName, Motion tmpMotion, int time) {
-    double ratio = (double) (time - tmpMotion.getStartTime())
-            / (tmpMotion.getEndTime() - tmpMotion.getStartTime());
-    Color color = new Color(
-            (int) (ratio * (tmpMotion.getEndColor().getRed() - tmpMotion.getStartColor().getRed())
-                    + tmpMotion.getStartColor().getRed()),
-            (int) (ratio * (tmpMotion.getEndColor().getGreen()
-                    - tmpMotion.getStartColor().getGreen())
-                    + tmpMotion.getStartColor().getGreen()),
-            (int) (ratio * (tmpMotion.getEndColor().getBlue()
-                    - tmpMotion.getStartColor().getBlue())
-                    + tmpMotion.getStartColor().getBlue()));
-    Position2D position = new Position2D(
-            ratio * (tmpMotion.getEndPosition().getX() - tmpMotion.getStartPosition().getX())
-                    + tmpMotion.getStartPosition().getX(),
-            ratio * (tmpMotion.getEndPosition().getY() - tmpMotion.getStartPosition().getY())
-                    + tmpMotion.getStartPosition().getY());
-    double width = ratio * (tmpMotion.getEndWidth() - tmpMotion.getStartWidth())
-            + tmpMotion.getStartWidth();
-    double height = ratio * (tmpMotion.getEndHeight() - tmpMotion.getStartHeight())
-            + tmpMotion.getStartHeight();
-
-    switch (shapeName) {
-      case "rectangle":
-        return new Rectangle(color, position, width, height);
-      case "oval":
-        return new Oval(color, position, width, height);
-      // More shapes can be implemented here.
-      default:
-        throw new IllegalArgumentException("Please provide a valid shape name.");
-    }
-  }
-
-  private Motion findMotion(List<Motion> listOfMotion, int time) {
-    for (Motion tmpMotion : listOfMotion) {
-      int startTime = tmpMotion.getStartTime();
-      int endTime = tmpMotion.getEndTime();
-
-      if (time >= startTime && time <= endTime) {
-        return new Motion(tmpMotion);
-      }
-    }
-    throw new IllegalArgumentException("Should not reach this point.");
-  }
-
 
   @Override
   public String toString() {
@@ -173,7 +108,14 @@ public class AnimationModel implements AnimationOperation {
     return output;
   }
 
-
+  /**
+   * Helper function for toString().
+   * Convert the given list of motions to lines of string based on toString()'s rules.
+   * @param name of the shape that we want to print out the list of motions.
+   * @param listOfMotion the list of motions associated to the name provided by the user.
+   * @return several lines of string thats a list of motions.
+   * @throws IllegalArgumentException if there is a teleporation.
+   */
   private String listOfMotionsToString(String name, List<Motion> listOfMotion) {
 
     listOfMotion.sort(new SortByStartTime());
@@ -207,21 +149,111 @@ public class AnimationModel implements AnimationOperation {
     for (int i = 0; i < listOfMotion.size() - 1; i++) {
       result = listOfMotion.get(i).getEndTime() == listOfMotion.get(i + 1).getStartTime();
       result = result
-              && (listOfMotion.get(i).getEndColor().equals(listOfMotion.get(i + 1).getStartColor()));
+          && (listOfMotion.get(i).getEndColor().equals(listOfMotion.get(i + 1).getStartColor()));
       result = result
-              && (listOfMotion.get(i).getEndHeight() == listOfMotion.get(i + 1).getStartHeight());
+          && (listOfMotion.get(i).getEndHeight() == listOfMotion.get(i + 1).getStartHeight());
       result = result
-              && (listOfMotion.get(i).getEndWidth() == listOfMotion.get(i + 1).getStartWidth());
+          && (listOfMotion.get(i).getEndWidth() == listOfMotion.get(i + 1).getStartWidth());
       result = result
-              && (listOfMotion.get(i).getEndPosition().getX() == listOfMotion.get(i + 1).getStartPosition().getX());
+          && (listOfMotion.get(i).getEndPosition().getX() == listOfMotion.get(i + 1).getStartPosition().getX());
       result = result
-              && (listOfMotion.get(i).getEndPosition().getY() == listOfMotion.get(i + 1).getStartPosition().getY());
+          && (listOfMotion.get(i).getEndPosition().getY() == listOfMotion.get(i + 1).getStartPosition().getY());
       // If there is a mismatch, delete the shape and throw new illegal argument.
       if (!result) {
         break;
       }
     }
     return result;
+  }
+
+  @Override
+  public List<IShape> getAnimation(int time) {
+
+    List<IShape> shapesAtTime = new ArrayList<>();
+
+    if (time < 1) {
+      throw new IllegalArgumentException("Invalid time.");
+    }
+
+    //go through all shapes in map, add to shapeAtTime if we find a shape that have motion at the
+    //  exact time
+    for (Map.Entry mapPair : animation.entrySet()) {
+      IShape tmpShape = (IShape) mapPair.getKey();
+      Motion tmpMotion;
+      if (isTimeInListOfMotion((List<Motion>) mapPair.getValue(), time)) {
+        tmpMotion = findMotion((List<Motion>) mapPair.getValue(), time);
+        shapesAtTime.add(buildShape(tmpShape.getShapeName(), tmpMotion, time));
+      }
+    }
+    return shapesAtTime;
+  }
+
+  /**
+   * Helper for getAnimation(). Checks the list of motion to see if the given time exist.
+   * @param listOfMotion of a shape provided by the user.
+   * @param time that user wants to validate that exist.
+   * @return true if the time exist.
+   */
+  private boolean isTimeInListOfMotion(List<Motion> listOfMotion, int time) {
+    int startTime = listOfMotion.get(0).getStartTime();
+    int endTime = listOfMotion.get(listOfMotion.size() - 1).getEndTime();
+
+    return (time >= startTime && time <= endTime);
+  }
+
+  /**
+   * Helper for getAnimation(). Builds a copy of a particular shape that contains the color,
+   *  position, width, height at a given time.
+   * @param shape the kind of shape that user wants to build.
+   * @param tmpMotion the motion that user wants to calculate the color, position, width, height
+   *                   of the shape.
+   * @param time  time at which user wants to calculate new shape characteristics at.
+   * @return the newly created shape.
+   * @throws IllegalArgumentException if the shape does not exist.
+   */
+  private IShape buildShape(String shape, Motion tmpMotion, int time) {
+    double ratio = (double) (time - tmpMotion.getStartTime())
+            / (tmpMotion.getEndTime() - tmpMotion.getStartTime());
+    Color color = new Color(
+            (int) (ratio * (tmpMotion.getEndColor().getRed() - tmpMotion.getStartColor().getRed())
+                    + tmpMotion.getStartColor().getRed()),
+            (int) (ratio * (tmpMotion.getEndColor().getGreen()
+                    - tmpMotion.getStartColor().getGreen())
+                    + tmpMotion.getStartColor().getGreen()),
+            (int) (ratio * (tmpMotion.getEndColor().getBlue()
+                    - tmpMotion.getStartColor().getBlue())
+                    + tmpMotion.getStartColor().getBlue()));
+    Position2D position = new Position2D(
+            ratio * (tmpMotion.getEndPosition().getX() - tmpMotion.getStartPosition().getX())
+                    + tmpMotion.getStartPosition().getX(),
+            ratio * (tmpMotion.getEndPosition().getY() - tmpMotion.getStartPosition().getY())
+                    + tmpMotion.getStartPosition().getY());
+    double width = ratio * (tmpMotion.getEndWidth() - tmpMotion.getStartWidth())
+            + tmpMotion.getStartWidth();
+    double height = ratio * (tmpMotion.getEndHeight() - tmpMotion.getStartHeight())
+            + tmpMotion.getStartHeight();
+
+    switch (shape) {
+      case "rectangle":
+        return new Rectangle(color, position, width, height);
+      case "oval":
+        return new Oval(color, position, width, height);
+      // More shapes can be implemented here.
+      default:
+        throw new IllegalArgumentException("Please provide a valid shape name.");
+    }
+  }
+
+  private Motion findMotion(List<Motion> listOfMotion, int time) {
+    for (Motion tmpMotion : listOfMotion) {
+      int startTime = tmpMotion.getStartTime();
+      int endTime = tmpMotion.getEndTime();
+
+      if (time >= startTime && time <= endTime) {
+        return new Motion(tmpMotion);
+      }
+    }
+    throw new IllegalArgumentException("Should not reach this point.");
   }
 
   @Override
