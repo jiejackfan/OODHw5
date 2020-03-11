@@ -1,6 +1,7 @@
 package cs3500.excellence.hw5;
 
 import java.awt.*;
+import java.util.Objects;
 
 /**
  * This abstract class represents a generic geometric shape and contains common fields and
@@ -39,39 +40,31 @@ public abstract class AShape implements IShape {
   }
 
 
-//  @Override
-//  public void changeAttributes(Color color, Position2D pos, double width, double height) {
-//    this.color = color;
-//    this.position = pos;
-//    this.width = width;
-//    this.height = height;
-//  }
-
-
   @Override
   public String getShapeName() {
     return this.shapeName;
   }
 
 
-//  @Override
-//  public int hashCode() {
-//    /////////////////
-//    return Objects.hash(color, position, width, height, shapeName);
-//  }
-//
-//  @Override
-//  public boolean equals(Object that) {
-//    if (this == that) {
-//      return true;
-//    } else {
-//      if (!(that instanceof IShape)) {
-//        return false;
-//      }
-//      return (this.color.equals((IShape)that.color) ////////////////////////////
-//              && (this.position.equals((IShape) that).position)
-//      && (this.width == ((IShape) that).width );
-//    }
-//  }
+  @Override
+  public int hashCode() {
+    return Objects.hash(color, position, width, height, shapeName);
+  }
+
+  @Override
+  public boolean equals(Object that) {
+    if (this == that) {
+      return true;
+    } else {
+      if (!(that instanceof AShape)) {
+        return false;
+      }
+      return (this.color.equals(((AShape)that).color))
+          && (this.position.equals(((AShape)that).position))
+          && (this.width == ((AShape)(that)).width)
+          && (this.height == ((AShape)(that)).height)
+          && (this.shapeName.equals(((AShape) (that)).shapeName));
+    }
+  }
 
 }
