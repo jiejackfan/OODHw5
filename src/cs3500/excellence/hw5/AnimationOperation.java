@@ -31,9 +31,6 @@ public interface AnimationOperation {
    */
   void removeShape(String name);
 
-
-  //void removeMotion(String name, int startTime, int endTime);
-
   /**
    * This function will add one motion (transition of attributes of a shape from a time to another)
    * to a corresponding shape.
@@ -56,10 +53,10 @@ public interface AnimationOperation {
    * @param endColorG End green color of the shape.
    */
   void addMotion(String name, int startTime, int startX, int startY, double startWidth,
-                 double startHeight, int startColorR, int startColorB, int startColorG,
+                 double startHeight, int startColorR, int startColorG, int startColorB,
                  int endTime, int endX, double endY, double endWidth,
                  double endHeight, int endColorR,
-                 int endColorB, int endColorG);
+                 int endColorG, int endColorB);
 
   /**
    * Return the complete animation as a string that discribes a shape and its list of motions.
@@ -88,8 +85,8 @@ public interface AnimationOperation {
    */
   String toString();
 
-  boolean checkValidAnimation(List<Motion> lom);
-
   List<IShape> getAnimation(int time);
+
+  //void removeMotion(String name, int startTime, int endTime);
 
 }

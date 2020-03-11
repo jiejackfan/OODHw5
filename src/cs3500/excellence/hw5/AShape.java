@@ -39,13 +39,13 @@ public abstract class AShape implements IShape {
   }
 
 
-  @Override
-  public void changeAttributes(Color color, Position2D pos, double width, double height) {
-    this.color = color;
-    this.position = pos;
-    this.width = width;
-    this.height = height;
-  }
+//  @Override
+//  public void changeAttributes(Color color, Position2D pos, double width, double height) {
+//    this.color = color;
+//    this.position = pos;
+//    this.width = width;
+//    this.height = height;
+//  }
 
 
   @Override
@@ -53,5 +53,25 @@ public abstract class AShape implements IShape {
     return this.shapeName;
   }
 
+
+//  @Override
+//  public int hashCode() {
+//    /////////////////
+//    return Objects.hash(color, position, width, height, shapeName);
+//  }
+//
+//  @Override
+//  public boolean equals(Object that) {
+//    if (this == that) {
+//      return true;
+//    } else {
+//      if (!(that instanceof IShape)) {
+//        return false;
+//      }
+//      return (this.color.equals((IShape)that.color) ////////////////////////////
+//              && (this.position.equals((IShape) that).position)
+//      && (this.width == ((IShape) that).width );
+//    }
+//  }
 
 }

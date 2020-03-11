@@ -25,6 +25,9 @@ public class Motion {
     if (startTime < 1 || endTime < 1) {
       throw new IllegalArgumentException("Invalid time.");
     }
+    if (startTime > endTime) {
+      throw new IllegalArgumentException("Start time cannot be greater than the end time.");
+    }
     // Check whether the given sizes are valid.
     if (startWidth <= 0 || startHeight <= 0 || endWidth <= 0 || endHeight <= 0) {
       throw new IllegalArgumentException("The size must be positive.");
