@@ -34,6 +34,7 @@ public interface AnimationOperation {
   /**
    * This function will add one motion (transition of attributes of a shape from a time to another)
    * to a corresponding shape.
+   *
    * @param name This is the custom name of the shape that user wants to add the motion to.
    * @param startTime Start time of the shape.
    * @param startX Start position X of the shape.
@@ -51,6 +52,7 @@ public interface AnimationOperation {
    * @param endColorR End red color of the shape.
    * @param endColorB End blue color of the shape.
    * @param endColorG End green color of the shape.
+   * @throws IllegalArgumentException
    */
   void addMotion(String name, int startTime, int startX, int startY, double startWidth,
                  double startHeight, int startColorR, int startColorG, int startColorB,
@@ -85,6 +87,14 @@ public interface AnimationOperation {
    */
   String toString();
 
+  /**
+   * This will be a function that builds a list of shapes that can be passed to view. Each shape
+   *  stores the time, Position2D, Color, width, height at a particular time. View will use this
+   *  list of shapes to draw each shape at a particular time.
+   *
+   * @param time at which each shape should be built with.
+   * @return a list of shapes with updated information on whats happening in that shape.
+   */
   List<IShape> getAnimation(int time);
 
   //void removeMotion(String name, int startTime, int endTime);
