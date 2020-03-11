@@ -2,10 +2,14 @@ package cs3500.excellence.hw5;
 
 import java.util.Objects;
 
+/**
+ * Position class that will store where the animation is currently at.
+ */
 public class Position2D {
 
   private double x;
   private double y;
+
 
   public Position2D(double x, double y) {
     if (x < 0 || y < 0) {
