@@ -116,13 +116,13 @@ public interface AnimationOperation {
   /**
    * Remove a motion from a list of motion for a given shape.
    *
-   * @param name arbitary str name that user assigned to their shape upon initialization.
+   * @param name  arbitary str name that user assigned to their shape upon initialization.
    * @param index the index of the motion the user wants to delete. This index needs to be either
    *              the first or the last motion in the list of motions.
-   * @throws IllegalArgumentException if the str name given by the user does not exist in current
-   *            animation.
+   * @throws IllegalArgumentException if the str name given by the user does not exist or null in
+   *                                  current animation.
    * @throws IllegalArgumentException if the index given by the user is not the first or the last
-   *            motion in a list of motions.
+   *                                  motion in a list of motions.
    */
   void removeMotion(String name, int index);
 }

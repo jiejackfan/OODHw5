@@ -42,6 +42,11 @@ public class AnimationModelTest {
     animationOne.createShape("rectangle", "");
   }
 
+  @Test(expected = IllegalArgumentException.class)
+  public void testCreateShapeNotExist() {
+    animationOne.createShape("triangle", "T");
+  }
+
   @Test
   public void testShapesNoMotionToString() {
     animationOne.createShape("rectangle", "R");
@@ -348,6 +353,7 @@ public class AnimationModelTest {
 //            + "motion O 6 440.0 70.0 120.0 60.0 0 0 255 20 440.0 70.0 120.0 60.0 0 0 255\n"
 //            + "motion O 20 440.0 70.0 120.0 60.0 0 0 255 50 440.0 250.0 120.0 60.0 0 0 255\n", animationOne.toString());
 //  }
+
   @Test
   public void testShapesUnorderedMotionsToString() {
     animationOne.createShape("rectangle", "R");
@@ -589,5 +595,164 @@ public class AnimationModelTest {
     assertEquals(currentShape.get(0), animationOne.getAnimation(21).get(0));
   }
 
+  @Test(expected = IllegalArgumentException.class)
+  public void testInvalidRemoveMotionNameDoesNotExist() {
+    animationOne.createShape("rectangle", "R");
+
+    animationOne.addMotion("R", 1, 200, 200, 50,
+            100, 255, 0, 0, 10,
+            200, 200, 50, 100, 255, 0, 0);
+    animationOne.addMotion("R", 10, 200, 200, 50,
+            100, 255, 0, 0, 50,
+            300, 300, 50, 100, 255, 0, 0);
+    animationOne.addMotion("R", 50, 300, 300, 50,
+            100, 255, 0, 0, 51,
+            300, 300, 50, 100, 255, 0, 0);
+    animationOne.addMotion("R", 51, 300, 300, 50,
+            100, 255, 0, 0, 70,
+            300, 300, 25, 100, 255, 0, 0);
+    animationOne.removeMotion("O", 0);
+  }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void testInvalidRemoveMotionNameNull() {
+    animationOne.createShape("rectangle", "R");
+
+    animationOne.addMotion("R", 1, 200, 200, 50,
+            100, 255, 0, 0, 10,
+            200, 200, 50, 100, 255, 0, 0);
+    animationOne.addMotion("R", 10, 200, 200, 50,
+            100, 255, 0, 0, 50,
+            300, 300, 50, 100, 255, 0, 0);
+    animationOne.addMotion("R", 50, 300, 300, 50,
+            100, 255, 0, 0, 51,
+            300, 300, 50, 100, 255, 0, 0);
+    animationOne.addMotion("R", 51, 300, 300, 50,
+            100, 255, 0, 0, 70,
+            300, 300, 25, 100, 255, 0, 0);
+    animationOne.removeMotion(null, 0);
+  }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void testInvalidRemoveMotionNameEmpty() {
+    animationOne.createShape("rectangle", "R");
+
+    animationOne.addMotion("R", 1, 200, 200, 50,
+            100, 255, 0, 0, 10,
+            200, 200, 50, 100, 255, 0, 0);
+    animationOne.addMotion("R", 10, 200, 200, 50,
+            100, 255, 0, 0, 50,
+            300, 300, 50, 100, 255, 0, 0);
+    animationOne.addMotion("R", 50, 300, 300, 50,
+            100, 255, 0, 0, 51,
+            300, 300, 50, 100, 255, 0, 0);
+    animationOne.addMotion("R", 51, 300, 300, 50,
+            100, 255, 0, 0, 70,
+            300, 300, 25, 100, 255, 0, 0);
+    animationOne.removeMotion("", 0);
+  }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void testInvalidRemoveMotionIndexTooSmall() {
+    animationOne.createShape("rectangle", "R");
+
+    animationOne.addMotion("R", 1, 200, 200, 50,
+            100, 255, 0, 0, 10,
+            200, 200, 50, 100, 255, 0, 0);
+    animationOne.addMotion("R", 10, 200, 200, 50,
+            100, 255, 0, 0, 50,
+            300, 300, 50, 100, 255, 0, 0);
+    animationOne.addMotion("R", 50, 300, 300, 50,
+            100, 255, 0, 0, 51,
+            300, 300, 50, 100, 255, 0, 0);
+    animationOne.addMotion("R", 51, 300, 300, 50,
+            100, 255, 0, 0, 70,
+            300, 300, 25, 100, 255, 0, 0);
+    animationOne.removeMotion("R", -1);
+  }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void testInvalidRemoveMotionIndexTooLarge() {
+    animationOne.createShape("rectangle", "R");
+
+    animationOne.addMotion("R", 1, 200, 200, 50,
+            100, 255, 0, 0, 10,
+            200, 200, 50, 100, 255, 0, 0);
+    animationOne.addMotion("R", 10, 200, 200, 50,
+            100, 255, 0, 0, 50,
+            300, 300, 50, 100, 255, 0, 0);
+    animationOne.addMotion("R", 50, 300, 300, 50,
+            100, 255, 0, 0, 51,
+            300, 300, 50, 100, 255, 0, 0);
+    animationOne.addMotion("R", 51, 300, 300, 50,
+            100, 255, 0, 0, 70,
+            300, 300, 25, 100, 255, 0, 0);
+    animationOne.removeMotion("R", 800);
+  }
+
+  @Test
+  public void testRemoveFirstMotion() {
+    animationOne.createShape("rectangle", "R");
+
+    animationOne.addMotion("R", 1, 200, 200, 50,
+            100, 255, 0, 0, 10,
+            200, 200, 50, 100, 255, 0, 0);
+    animationOne.addMotion("R", 10, 200, 200, 50,
+            100, 255, 0, 0, 50,
+            300, 300, 50, 100, 255, 0, 0);
+    animationOne.addMotion("R", 50, 300, 300, 50,
+            100, 255, 0, 0, 51,
+            300, 300, 50, 100, 255, 0, 0);
+    animationOne.addMotion("R", 51, 300, 300, 50,
+            100, 255, 0, 0, 70,
+            300, 300, 25, 100, 255, 0, 0);
+    animationOne.removeMotion("R", 0);
+    assertEquals("Shape R rectangle\n"
+            + "motion R 10 200.0 200.0 50.0 100.0 255 0 0 50 300.0 300.0 50.0 100.0 255 0 0\n"
+            + "motion R 50 300.0 300.0 50.0 100.0 255 0 0 51 300.0 300.0 50.0 100.0 255 0 0\n"
+            + "motion R 51 300.0 300.0 50.0 100.0 255 0 0 70 300.0 300.0 25.0 100.0 255 0 0\n", animationOne.toString());
+  }
+
+  @Test
+  public void testRemoveLastMotion() {
+    animationOne.createShape("rectangle", "R");
+
+    animationOne.addMotion("R", 1, 200, 200, 50,
+            100, 255, 0, 0, 10,
+            200, 200, 50, 100, 255, 0, 0);
+    animationOne.addMotion("R", 10, 200, 200, 50,
+            100, 255, 0, 0, 50,
+            300, 300, 50, 100, 255, 0, 0);
+    animationOne.addMotion("R", 50, 300, 300, 50,
+            100, 255, 0, 0, 51,
+            300, 300, 50, 100, 255, 0, 0);
+    animationOne.addMotion("R", 51, 300, 300, 50,
+            100, 255, 0, 0, 70,
+            300, 300, 25, 100, 255, 0, 0);
+    animationOne.removeMotion("R", 3);
+    assertEquals("Shape R rectangle\n"
+            + "motion R 1 200.0 200.0 50.0 100.0 255 0 0 10 200.0 200.0 50.0 100.0 255 0 0\n"
+            + "motion R 10 200.0 200.0 50.0 100.0 255 0 0 50 300.0 300.0 50.0 100.0 255 0 0\n"
+            + "motion R 50 300.0 300.0 50.0 100.0 255 0 0 51 300.0 300.0 50.0 100.0 255 0 0\n", animationOne.toString());
+  }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void testInvalidRemoveMotionFromMiddle() {
+    animationOne.createShape("rectangle", "R");
+
+    animationOne.addMotion("R", 1, 200, 200, 50,
+            100, 255, 0, 0, 10,
+            200, 200, 50, 100, 255, 0, 0);
+    animationOne.addMotion("R", 10, 200, 200, 50,
+            100, 255, 0, 0, 50,
+            300, 300, 50, 100, 255, 0, 0);
+    animationOne.addMotion("R", 50, 300, 300, 50,
+            100, 255, 0, 0, 51,
+            300, 300, 50, 100, 255, 0, 0);
+    animationOne.addMotion("R", 51, 300, 300, 50,
+            100, 255, 0, 0, 70,
+            300, 300, 25, 100, 255, 0, 0);
+    animationOne.removeMotion("R", 1);
+  }
 
 }
