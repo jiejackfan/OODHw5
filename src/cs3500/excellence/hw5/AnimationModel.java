@@ -7,16 +7,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-class SortByStartTime implements Comparator<Motion>
-{
-  // Used for sorting in ascending order of
-  // start time
-  public int compare(Motion a, Motion b)
-  {
-    return a.getStartTime() - b.getEndTime();
-  }
-}
-
 public class AnimationModel implements AnimationOperation {
 
   private final Map<String, IShape> nameMap;
@@ -29,12 +19,63 @@ public class AnimationModel implements AnimationOperation {
     //this.currentAnimation = new ArrayList<>();
   }
 
-  private boolean isTimeInListOfMotion(List<Motion> listOfMotion, int time) {
-    int startTime = listOfMotion.get(0).getStartTime();
-    int endTime = listOfMotion.get(listOfMotion.size() - 1).getEndTime();
+  @Override
+  public void createShape(String shape, String name) {
+    if (name == null || name.equals("")) {
+      throw new IllegalArgumentException("The name cannot be null or empty.");
+    }
+    if (shape == null || shape.equals("")) {
+      throw new IllegalArgumentException("Invalid shape input.");
+    }
+    switch (shape.toLowerCase()) {
+      case "rectangle":
+        nameMap.put(name, new Rectangle());
+        animation.put(nameMap.get(name), new ArrayList<>());
+        break;
+      case "oval":
+        nameMap.put(name, new Oval());
+        animation.put(nameMap.get(name), new ArrayList<>());
+        break;
+      // More shapes can be implemented here.
+      default:
+        throw new IllegalArgumentException("Please provide a valid shape.");
+    }
+  }
 
-    return (time >= startTime && time <= endTime);
+  @Override
+  public void removeShape(String name) {
+    // Check whether the shape exist in the animation
+    if (!nameMap.containsKey(name)) {
+      throw new IllegalArgumentException("The given shape is not in the animation.");
+    }
+    animation.remove(nameMap.get(name));
+    nameMap.remove(name);
+  }
 
+  @Override
+  public void addMotion(String name, int startTime, int startX, int startY, double startWidth,
+                        double startHeight, int startColorR, int startColorG, int startColorB,
+                        int endTime, int endX, double endY, double endWidth,
+                        double endHeight, int endColorR, int endColorG,
+                        int endColorB) {
+    // Check whether the given parameters of color are valid, if they are valid, pass into the color
+    // constructor, if not, throw an illegal argument exception.
+    if (!nameMap.containsKey(name)) {
+      throw new IllegalArgumentException("The name does not exist in current shapes.");
+    }
+    if (startColorR < 0 || startColorR > 255 || endColorR < 0 || endColorR > 255
+            || startColorG < 0 || startColorG > 255 || endColorG < 0 || endColorG > 255
+            || startColorB < 0 || startColorB > 255 || endColorB < 0 || endColorB > 255) {
+      throw new IllegalArgumentException("The RGB value must be within the range.");
+    }
+
+    // Other parameters are check when constructing the motion, and the parameters of position are
+    // checked in the position2D in the constructor of class position2D.
+    animation.get(nameMap.get(name)).add(
+            new Motion(startTime, new Position2D(startX, startY), startWidth, startHeight,
+                    new Color(startColorR, startColorG, startColorB), endTime,
+                    new Position2D(endX, endY), endWidth, endHeight,
+                    new Color(endColorR, endColorG, endColorB)));
   }
 
   @Override
@@ -42,22 +83,42 @@ public class AnimationModel implements AnimationOperation {
 
     List<IShape> shapesAtTime = new ArrayList<>();
 
-    if (time < 0) {
+    if (time < 1) {
       throw new IllegalArgumentException("Invalid time.");
     }
 
     //go through all shapes in map, add to shapeAtTime if we find a shape that have motion at the
     //  exact time
     for (Map.Entry mapPair : animation.entrySet()) {
+      IShape tmpShape = (IShape) mapPair.getKey();
+      Motion tmpMotion;
       if (isTimeInListOfMotion((List<Motion>) mapPair.getValue(), time)) {
-        IShape tmpShape = (IShape) mapPair.getKey();
-        Motion tmpMotion;
         tmpMotion = findMotion((List<Motion>) mapPair.getValue(), time);
-
-        shapesAtTime.add(buildShape(((IShape) mapPair.getKey()).getShapeName(), tmpMotion, time));
+        shapesAtTime.add(buildShape(tmpShape.getShapeName(), tmpMotion, time));
+      } else {
+        shapesAtTime.add(buildEmptyShape(tmpShape.getShapeName()));
       }
     }
     return shapesAtTime;
+  }
+
+  private boolean isTimeInListOfMotion(List<Motion> listOfMotion, int time) {
+    int startTime = listOfMotion.get(0).getStartTime();
+    int endTime = listOfMotion.get(listOfMotion.size() - 1).getEndTime();
+
+    return (time >= startTime && time <= endTime);
+  }
+
+  private IShape buildEmptyShape(String shapeName) {
+    switch (shapeName) {
+      case "rectangle":
+        return new Rectangle();
+      case "oval":
+        return new Oval();
+      // More shapes can be implemented here.
+      default:
+        throw new IllegalArgumentException("Please provide a valid shape name.");
+    }
   }
 
   private IShape buildShape(String shapeName, Motion tmpMotion, int time) {
@@ -98,7 +159,7 @@ public class AnimationModel implements AnimationOperation {
       int startTime = tmpMotion.getStartTime();
       int endTime = tmpMotion.getEndTime();
 
-      if (time <= startTime && time >= endTime) {
+      if (time >= startTime && time <= endTime) {
         return new Motion(tmpMotion);
       }
     }
@@ -117,38 +178,7 @@ public class AnimationModel implements AnimationOperation {
 //    throw new IllegalArgumentException("Should not reach this point.");
 //  }
 
-  @Override
-  public void createShape(String shape, String name) {
-    if (name == null || name.equals("")) {
-      throw new IllegalArgumentException("The name cannot be null or empty.");
-    }
-    if (shape == null || shape.equals("")) {
-      throw new IllegalArgumentException("Invalid shape input.");
-    }
-    switch (shape.toLowerCase()) {
-      case "rectangle":
-        nameMap.put(name, new Rectangle());
-        animation.put(nameMap.get(name), new ArrayList<>());
-        break;
-      case "oval":
-        nameMap.put(name, new Oval());
-        animation.put(nameMap.get(name), new ArrayList<>());
-        break;
-      // More shapes can be implemented here.
-      default:
-        throw new IllegalArgumentException("Please provide a valid shape.");
-    }
-  }
 
-  @Override
-  public void removeShape(String name) {
-    // Check whether the shape exist in the animation
-    if (!nameMap.containsKey(name)) {
-      throw new IllegalArgumentException("The given shape is not in the animation.");
-    }
-    animation.remove(nameMap.get(name));
-    nameMap.remove(name);
-  }
 
   /*
   @Override
@@ -238,40 +268,10 @@ public class AnimationModel implements AnimationOperation {
   private void changeStartingMotion(int startTime, List<Motion> listOfMotion) {
     changeMotion(listOfMotion.get(0), );
   }
-
-
   private void changeEndingMotion(int endTime, List<Motion> listOfMotion) {
 
   }
    */
-
-
-  @Override
-  public void addMotion(String name, int startTime, int startX, int startY, double startWidth,
-                        double startHeight, int startColorR, int startColorG, int startColorB,
-                        int endTime, int endX, double endY, double endWidth,
-                        double endHeight, int endColorR, int endColorG,
-                        int endColorB) {
-    // Check whether the given parameters of color are valid, if they are valid, pass into the color
-    // constructor, if not, throw an illegal argument exception.
-    if (!nameMap.containsKey(name)) {
-      throw new IllegalArgumentException("The name does not exist in current shapes.");
-    }
-    if (startColorR < 0 || startColorR > 255 || endColorR < 0 || endColorR > 255
-            || startColorG < 0 || startColorG > 255 || endColorG < 0 || endColorG > 255
-            || startColorB < 0 || startColorB > 255 || endColorB < 0 || endColorB > 255) {
-      throw new IllegalArgumentException("The RGB value must be within the range.");
-    }
-
-    // Other parameters are check when constructing the motion, and the parameters of position are
-    // checked in the posit
-    // ion2D in the constructor of class position2D.
-    animation.get(nameMap.get(name)).add(
-            new Motion(startTime, new Position2D(startX, startY), startWidth, startHeight,
-                    new Color(startColorR, startColorG, startColorB), endTime,
-                    new Position2D(endX, endY), endWidth, endHeight,
-                    new Color(endColorR, endColorG, endColorB)));
-  }
 
   @Override
   public String toString() {
@@ -300,21 +300,20 @@ public class AnimationModel implements AnimationOperation {
     if (animation.entrySet().isEmpty()) {
       return true;
     }
-
     // Check whether the list of motions for each shape is valid
     // and combine all results
-    for (int i = 0; i < listOfMotion.size() - 2; i++) {
-
+    for (int i = 0; i < listOfMotion.size() - 1; i++) {
       result = listOfMotion.get(i).getEndTime() == listOfMotion.get(i + 1).getStartTime();
       result = result
-          && (listOfMotion.get(i).getEndColor().equals(listOfMotion.get(i+1).getStartColor()));
+              && (listOfMotion.get(i).getEndColor().equals(listOfMotion.get(i + 1).getStartColor()));
       result = result
-          && (listOfMotion.get(i).getEndHeight() == listOfMotion.get(i+1).getStartHeight());
+              && (listOfMotion.get(i).getEndHeight() == listOfMotion.get(i + 1).getStartHeight());
       result = result
-          && (listOfMotion.get(i).getEndWidth() == listOfMotion.get(i+1).getStartWidth());
+              && (listOfMotion.get(i).getEndWidth() == listOfMotion.get(i + 1).getStartWidth());
       result = result
-          && (listOfMotion.get(i).getEndPosition() == listOfMotion.get(i+1).getStartPosition());
-
+              && (listOfMotion.get(i).getEndPosition().getX() == listOfMotion.get(i + 1).getStartPosition().getX());
+      result = result
+              && (listOfMotion.get(i).getEndPosition().getY() == listOfMotion.get(i + 1).getStartPosition().getY());
       // If there is a mismatch, delete the shape and throw new illegal argument.
       if (!result) {
         break;
@@ -329,7 +328,7 @@ public class AnimationModel implements AnimationOperation {
 
     if (!checkValidAnimation(listOfMotion)) {
       throw new IllegalStateException("There is teleportation or overlap in this shape, this "
-          + "shape will be deleted.");
+              + "shape will be deleted.");
     }
 
     String result = "";
@@ -338,4 +337,13 @@ public class AnimationModel implements AnimationOperation {
     }
     return result;
   }
+
+  class SortByStartTime implements Comparator<Motion> {
+    // Used for sorting in ascending order of
+    // start time
+    public int compare(Motion a, Motion b) {
+      return a.getStartTime() - b.getEndTime();
+    }
+  }
+
 }
