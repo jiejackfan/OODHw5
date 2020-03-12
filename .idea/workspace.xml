@@ -5,11 +5,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cs3500/excellence/hw5/AShape.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/excellence/hw5/AShape.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cs3500/excellence/hw5/AnimationModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/excellence/hw5/AnimationModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/excellence/hw5/AnimationOperation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/excellence/hw5/AnimationOperation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/excellence/hw5/IShape.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/excellence/hw5/IShape.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cs3500/excellence/hw5/Motion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/excellence/hw5/Motion.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cs3500/excellence/hw5/Oval.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/excellence/hw5/Oval.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cs3500/excellence/hw5/Position2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/excellence/hw5/Position2D.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cs3500/excellence/hw5/Rectangle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/excellence/hw5/Rectangle.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/AnimationModelTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/AnimationModelTest.java" afterDir="false" />
     </list>
@@ -186,7 +183,14 @@
       <option name="project" value="LOCAL" />
       <updated>1583971248762</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Format to Java style.">
+      <created>1583973135825</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1583973135825</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -198,7 +202,8 @@
     <MESSAGE value="Added tests for getAnimation() and fixed some bugs." />
     <MESSAGE value="Added tests for removeMotion() and fixed some bugs." />
     <MESSAGE value="Fixed bugs." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed bugs." />
+    <MESSAGE value="Format to Java style." />
+    <option name="LAST_COMMIT_MESSAGE" value="Format to Java style." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -217,10 +222,10 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="489" y="101" key="#com.intellij.ide.util.MemberChooser/0.0.1440.900@0.0.1440.900" timestamp="1583797289017" />
-    <state x="270" y="0" width="893" height="877" key="CommitChangelistDialog2" timestamp="1583971248321">
+    <state x="270" y="0" width="893" height="877" key="CommitChangelistDialog2" timestamp="1583973462720">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="270" y="0" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1583971248321" />
+    <state x="270" y="0" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1583973462720" />
     <state x="270" y="23" width="893" height="877" key="CommitChangelistDialog2/0.23.1440.877@0.23.1440.877" timestamp="1583705899616" />
     <state x="549" y="171" key="FileChooserDialogImpl" timestamp="1583859315583">
       <screen x="0" y="0" width="1536" height="824" />
@@ -283,10 +288,10 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="264" y="334" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1440.900@0.0.1440.900" timestamp="1582952219641" />
-    <state x="463" y="358" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1583971879622">
+    <state x="463" y="358" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1583973447011">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="463" y="358" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1440.900@0.0.1440.900" timestamp="1583971879622" />
+    <state x="463" y="358" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1440.900@0.0.1440.900" timestamp="1583973447011" />
     <state x="209" y="40" key="new project wizard" timestamp="1582836491587">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
