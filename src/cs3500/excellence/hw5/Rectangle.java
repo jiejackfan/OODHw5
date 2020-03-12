@@ -1,6 +1,6 @@
 package cs3500.excellence.hw5;
 
-import java.awt.*;
+import java.awt.Color;
 
 /**
  * A rectangle shape implementation that is extending the abstract shape class. This class will be
