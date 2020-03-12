@@ -3,7 +3,7 @@ package cs3500.excellence.hw5;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -20,8 +20,8 @@ public class AnimationModel implements AnimationOperation {
   private final Map<IShape, List<Motion>> animation;
 
   public AnimationModel() {
-    this.nameMap = new HashMap<>();
-    this.animation = new HashMap<>();
+    this.nameMap = new LinkedHashMap<>();
+    this.animation = new LinkedHashMap<>();
   }
 
   @Override
@@ -34,11 +34,11 @@ public class AnimationModel implements AnimationOperation {
     }
     switch (shape.toLowerCase()) {
       case "rectangle":
-        nameMap.put(name, new Rectangle());
+        nameMap.put(name, new Rectangle(name));
         animation.put(nameMap.get(name), new ArrayList<>());
         break;
       case "oval":
-        nameMap.put(name, new Oval());
+        nameMap.put(name, new Oval(name));
         animation.put(nameMap.get(name), new ArrayList<>());
         break;
       // More shapes can be implemented here.
@@ -99,7 +99,7 @@ public class AnimationModel implements AnimationOperation {
       Motion tmpMotion;
       if (isTimeInListOfMotion((List<Motion>) mapPair.getValue(), time)) {
         tmpMotion = findMotion((List<Motion>) mapPair.getValue(), time);
-        shapesAtTime.add(buildShape(tmpShape.getShapeName(), tmpMotion, time));
+        shapesAtTime.add(buildShape(tmpShape.getShapeName(), tmpMotion, time, tmpShape.getName()));
       }
     }
     return shapesAtTime;
@@ -112,7 +112,7 @@ public class AnimationModel implements AnimationOperation {
     return (time >= startTime && time <= endTime);
   }
 
-  private IShape buildShape(String shapeName, Motion tmpMotion, int time) {
+  private IShape buildShape(String shapeName, Motion tmpMotion, int time, String name) {
     double ratio = (double) (time - tmpMotion.getStartTime())
             / (tmpMotion.getEndTime() - tmpMotion.getStartTime());
     Color color = new Color(
@@ -136,9 +136,9 @@ public class AnimationModel implements AnimationOperation {
 
     switch (shapeName) {
       case "rectangle":
-        return new Rectangle(color, position, width, height);
+        return new Rectangle(color, position, width, height, name);
       case "oval":
-        return new Oval(color, position, width, height);
+        return new Oval(color, position, width, height, name);
       // More shapes can be implemented here.
       default:
         throw new IllegalArgumentException("Please provide a valid shape name.");

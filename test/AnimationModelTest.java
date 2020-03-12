@@ -12,6 +12,7 @@ import cs3500.excellence.hw5.Position2D;
 import cs3500.excellence.hw5.Rectangle;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 /**
@@ -318,48 +319,51 @@ public class AnimationModelTest {
   /**
    * The order is not correct.
    */
-//  @Test
-//  public void testSameShapeSameMotionsDifferentNames() {
-//    animationOne.createShape("rectangle", "R1");
-//    animationOne.createShape("rectangle", "R2");
-//    animationOne.createShape("oval", "O1");
-//    animationOne.createShape("oval", "O2");
-//
-//    animationOne.addMotion("R1", 1, 200, 200, 50,
-//            100, 255, 0, 0, 10,
-//            200, 200, 50, 100, 255, 0, 0);
-//    animationOne.addMotion("R1", 10, 200, 200, 50,
-//            100, 255, 0, 0, 50,
-//            300, 300, 50, 100, 255, 0, 0);
-//    animationOne.addMotion("R2", 1, 200, 200, 50,
-//            100, 255, 0, 0, 10,
-//            200, 200, 50, 100, 255, 0, 0);
-//    animationOne.addMotion("R2", 10, 200, 200, 50,
-//            100, 255, 0, 0, 50,
-//            300, 300, 50, 100, 255, 0, 0);
-//    animationOne.addMotion("O1", 6, 440, 70, 120,
-//            60, 0, 0, 255, 20,
-//            440, 70, 120, 60, 0, 0, 255);
-//    animationOne.addMotion("O1", 20, 440, 70, 120,
-//            60, 0, 0, 255, 50,
-//            440, 250, 120, 60, 0, 0, 255);
-//    animationOne.addMotion("O2", 6, 440, 70, 120,
-//            60, 0, 0, 255, 20,
-//            440, 70, 120, 60, 0, 0, 255);
-//    animationOne.addMotion("O2", 20, 440, 70, 120,
-//            60, 0, 0, 255, 50,
-//            440, 250, 120, 60, 0, 0, 255);
-//
-//    assertEquals("Shape R rectangle\n"
-//            + "motion R1 1 200.0 200.0 50.0 100.0 255 0 0 10 200.0 200.0 50.0 100.0 255 0 0\n"
-//            + "motion R1 10 200.0 200.0 50.0 100.0 255 0 0 50 300.0 300.0 50.0 100.0 255 0 0\n"
-//                    +"Shape R2 rectangle\n"
-//                    + "motion R2 1 200.0 200.0 50.0 100.0 255 0 0 10 200.0 200.0 50.0 100.0 255 0 0\n"
-//                    + "motion R2 10 200.0 200.0 50.0 100.0 255 0 0 50 300.0 300.0 50.0 100.0 255 0 0\n"
-//            + "Shape O oval\n"
-//            + "motion O 6 440.0 70.0 120.0 60.0 0 0 255 20 440.0 70.0 120.0 60.0 0 0 255\n"
-//            + "motion O 20 440.0 70.0 120.0 60.0 0 0 255 50 440.0 250.0 120.0 60.0 0 0 255\n", animationOne.toString());
-//  }
+  @Test
+  public void testSameShapeSameMotionsDifferentNames() {
+    animationOne.createShape("rectangle", "R1");
+    animationOne.createShape("oval", "O2");
+    animationOne.createShape("oval", "O1");
+    animationOne.createShape("rectangle", "R2");
+
+    animationOne.addMotion("O2", 6, 440, 70, 120,
+            60, 0, 0, 255, 20,
+            440, 70, 120, 60, 0, 0, 255);
+    animationOne.addMotion("O2", 20, 440, 70, 120,
+            60, 0, 0, 255, 50,
+            440, 250, 120, 60, 0, 0, 255);
+    animationOne.addMotion("R1", 1, 200, 200, 50,
+            100, 255, 0, 0, 10,
+            200, 200, 50, 100, 255, 0, 0);
+    animationOne.addMotion("R1", 10, 200, 200, 50,
+            100, 255, 0, 0, 50,
+            300, 300, 50, 100, 255, 0, 0);
+    animationOne.addMotion("R2", 1, 200, 200, 50,
+            100, 255, 0, 0, 10,
+            200, 200, 50, 100, 255, 0, 0);
+    animationOne.addMotion("R2", 10, 200, 200, 50,
+            100, 255, 0, 0, 50,
+            300, 300, 50, 100, 255, 0, 0);
+    animationOne.addMotion("O1", 6, 440, 70, 120,
+            60, 0, 0, 255, 20,
+            440, 70, 120, 60, 0, 0, 255);
+    animationOne.addMotion("O1", 20, 440, 70, 120,
+            60, 0, 0, 255, 50,
+            440, 250, 120, 60, 0, 0, 255);
+
+    assertEquals("Shape R1 rectangle\n"
+            + "motion R1 1 200.0 200.0 50.0 100.0 255 0 0 10 200.0 200.0 50.0 100.0 255 0 0\n"
+            + "motion R1 10 200.0 200.0 50.0 100.0 255 0 0 50 300.0 300.0 50.0 100.0 255 0 0\n"
+            + "Shape O2 oval\n"
+            + "motion O2 6 440.0 70.0 120.0 60.0 0 0 255 20 440.0 70.0 120.0 60.0 0 0 255\n"
+            + "motion O2 20 440.0 70.0 120.0 60.0 0 0 255 50 440.0 250.0 120.0 60.0 0 0 255\n"
+            + "Shape O1 oval\n"
+            + "motion O1 6 440.0 70.0 120.0 60.0 0 0 255 20 440.0 70.0 120.0 60.0 0 0 255\n"
+            + "motion O1 20 440.0 70.0 120.0 60.0 0 0 255 50 440.0 250.0 120.0 60.0 0 0 255\n"
+            + "Shape R2 rectangle\n"
+            + "motion R2 1 200.0 200.0 50.0 100.0 255 0 0 10 200.0 200.0 50.0 100.0 255 0 0\n"
+            + "motion R2 10 200.0 200.0 50.0 100.0 255 0 0 50 300.0 300.0 50.0 100.0 255 0 0\n", animationOne.toString());
+  }
 
   @Test
   public void testShapesUnorderedMotionsToString() {
@@ -514,10 +518,30 @@ public class AnimationModelTest {
   }
 
   @Test
+  public void testShapeGetName() {
+    IShape r = new Rectangle(new Color(0, 0, 0), new Position2D(0, 0), 10, 10, "R");
+    assertEquals("rectangle", r.getShapeName());
+  }
+
+  @Test
+  public void testShapesHashCode() {
+    IShape r1 = new Rectangle(new Color(0, 0, 0), new Position2D(0, 0), 10, 10, "R1");
+    IShape r2 = new Rectangle(new Color(0, 0, 0), new Position2D(0, 0), 10, 10, "R2");
+    assertTrue(r1.hashCode() == r2.hashCode());
+  }
+
+  @Test
   public void testShapesEqual() {
-    IShape r1 = new Rectangle(new Color(0, 0, 0), new Position2D(0, 0), 10, 10);
-    IShape r2 = new Rectangle(new Color(0, 0, 0), new Position2D(0, 0), 10, 10);
+    IShape r1 = new Rectangle(new Color(0, 0, 0), new Position2D(0, 0), 10, 10, "R");
+    IShape r2 = new Rectangle(new Color(0, 0, 0), new Position2D(0, 0), 10, 10, "R");
     assertTrue(r1.equals(r2));
+  }
+
+  @Test
+  public void testShapesNotEqual() {
+    IShape r1 = new Rectangle(new Color(0, 0, 0), new Position2D(0, 0), 10, 10, "R1");
+    IShape r2 = new Rectangle(new Color(0, 0, 0), new Position2D(0, 0), 10, 10, "R2");
+    assertFalse(r1.equals(r2));
   }
 
   @Test
@@ -536,7 +560,7 @@ public class AnimationModelTest {
             10, 10, 20, 20, 100, 100, 100);
     List<IShape> currentShape = new ArrayList<>();
     currentShape.add(
-            new Rectangle(new Color(0, 0, 0), new Position2D(0, 0), 10, 10));
+            new Rectangle(new Color(0, 0, 0), new Position2D(0, 0), 10, 10, "R"));
     assertEquals(currentShape.get(0), animationOne.getAnimation(1).get(0));
   }
 
@@ -556,7 +580,7 @@ public class AnimationModelTest {
             10, 10, 20, 20, 100, 100, 100);
     List<IShape> currentShape = new ArrayList<>();
     currentShape.add(
-            new Rectangle(new Color(50, 50, 50), new Position2D(5, 5), 15.0, 15.0));
+            new Rectangle(new Color(50, 50, 50), new Position2D(5, 5), 15.0, 15.0, "R"));
     assertEquals(currentShape.get(0), animationOne.getAnimation(6).get(0));
   }
 
@@ -576,9 +600,9 @@ public class AnimationModelTest {
             10, 10, 20, 20, 100, 100, 100);
     List<IShape> currentShape = new ArrayList<>();
     currentShape.add(
-            new Rectangle(new Color(100, 100, 100), new Position2D(10, 10), 20, 20));
+            new Rectangle(new Color(100, 100, 100), new Position2D(10, 10), 20, 20, "R"));
     currentShape.add(
-            new Oval(new Color(0, 0, 0), new Position2D(0, 0), 10, 10));
+            new Oval(new Color(0, 0, 0), new Position2D(0, 0), 10, 10, "O"));
     assertEquals(currentShape.get(0), animationOne.getAnimation(11).get(0));
     assertEquals(currentShape.get(1), animationOne.getAnimation(11).get(1));
   }
@@ -599,7 +623,7 @@ public class AnimationModelTest {
             10, 10, 20, 20, 100, 100, 100);
     List<IShape> currentShape = new ArrayList<>();
     currentShape.add(
-            new Oval(new Color(100, 100, 100), new Position2D(10, 10), 20, 20));
+            new Oval(new Color(100, 100, 100), new Position2D(10, 10), 20, 20, "O"));
     assertEquals(currentShape.get(0), animationOne.getAnimation(21).get(0));
   }
 
