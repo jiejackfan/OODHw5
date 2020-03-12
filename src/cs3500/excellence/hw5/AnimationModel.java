@@ -3,7 +3,7 @@ package cs3500.excellence.hw5;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -29,8 +29,8 @@ public class AnimationModel implements AnimationOperation {
    * Constructor for model, initialize two empty hash maps.
    */
   public AnimationModel() {
-    this.nameMap = new HashMap<>();
-    this.animation = new HashMap<>();
+    this.nameMap = new LinkedHashMap<>();
+    this.animation = new LinkedHashMap<>();
   }
 
   @Override
@@ -43,11 +43,11 @@ public class AnimationModel implements AnimationOperation {
     }
     switch (shape.toLowerCase()) {
       case "rectangle":
-        nameMap.put(name, new Rectangle());
+        nameMap.put(name, new Rectangle(name));
         animation.put(nameMap.get(name), new ArrayList<>());
         break;
       case "oval":
-        nameMap.put(name, new Oval());
+        nameMap.put(name, new Oval(name));
         animation.put(nameMap.get(name), new ArrayList<>());
         break;
       // More shapes can be implemented here.
@@ -182,7 +182,7 @@ public class AnimationModel implements AnimationOperation {
       Motion tmpMotion;
       if (isTimeInListOfMotion((List<Motion>) mapPair.getValue(), time)) {
         tmpMotion = findMotion((List<Motion>) mapPair.getValue(), time);
-        shapesAtTime.add(buildShape(tmpShape.getShapeName(), tmpMotion, time));
+        shapesAtTime.add(buildShape(tmpShape.getShapeName(), tmpMotion, time, tmpShape.getName()));
       }
     }
     return shapesAtTime;
@@ -201,6 +201,7 @@ public class AnimationModel implements AnimationOperation {
     return (time >= startTime && time <= endTime);
   }
 
+
   /**
    * Helper for getAnimation(). Builds a copy of a particular shape that contains the color,
    *  position, width, height at a given time.
@@ -211,7 +212,8 @@ public class AnimationModel implements AnimationOperation {
    * @return the newly created shape.
    * @throws IllegalArgumentException if the shape does not exist.
    */
-  private IShape buildShape(String shape, Motion tmpMotion, int time) {
+  private IShape buildShape(String shapeName, Motion tmpMotion, int time, String name) {
+
     double ratio = (double) (time - tmpMotion.getStartTime())
             / (tmpMotion.getEndTime() - tmpMotion.getStartTime());
     Color color = new Color(
@@ -235,15 +237,21 @@ public class AnimationModel implements AnimationOperation {
 
     switch (shape) {
       case "rectangle":
-        return new Rectangle(color, position, width, height);
+        return new Rectangle(color, position, width, height, name);
       case "oval":
-        return new Oval(color, position, width, height);
+        return new Oval(color, position, width, height, name);
       // More shapes can be implemented here.
       default:
         throw new IllegalArgumentException("Please provide a valid shape name.");
     }
   }
-
+  
+   /**
+   * Find and return the motion that has the given time in a list of motions.
+   * @param listOfMotion we want to find the motion in.
+   * @param time the time of the motion we want to find.
+   * @return the motion that contains the time.
+   */
   private Motion findMotion(List<Motion> listOfMotion, int time) {
     for (Motion tmpMotion : listOfMotion) {
       int startTime = tmpMotion.getStartTime();

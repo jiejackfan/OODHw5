@@ -8,12 +8,21 @@ public interface IShape {
 
   /**
    * This function will find and return the custom name of each shape user created.
-   * @return custom str of a shape that user assigned at shape creation.
+   *
+   * @return custom str of a shape.
    */
   String getShapeName();
 
   /**
+   * This function will find and return the custom name of each shape user created.
+   *
+   * @return custom str of a shape that user assigned at shape creation.
+   */
+  String getName();
+
+  /**
    * This will aid the equals function that we will rewrite below.
+   *
    * @return
    */
   int hashCode();

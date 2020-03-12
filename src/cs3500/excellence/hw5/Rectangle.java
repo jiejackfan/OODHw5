@@ -1,7 +1,5 @@
 package cs3500.excellence.hw5;
 
-import cs3500.excellence.hw5.AShape;
-import cs3500.excellence.hw5.Position2D;
 import java.awt.*;
 
 /**
@@ -15,23 +13,24 @@ public class Rectangle extends AShape {
    * Constructor to a rectangle that assigns "rectangle" to the shapeName variable in the abstract
    * class.
    */
-  public Rectangle() {
-    super();
-    this.shapeName = "rectangle";
+  public Rectangle(String name) {
+    super(name);
+    this.shape = "rectangle";
   }
 
   /**
    * Constructor to a rectangle that assigns the "rectangle: to the shapeName variable and also
    * assign some characteristics to this shape and store all of these variable to the abstract
    * class.
-   * @param color is color of rectangle at initialization.
+   *
+   * @param color    is color of rectangle at initialization.
    * @param position is position of rectangle at initialization.
-   * @param width is width of rectangle at initialization.
-   * @param height is height of rectangle at initialization.
+   * @param width    is width of rectangle at initialization.
+   * @param height   is height of rectangle at initialization.
    */
-  public Rectangle(Color color, Position2D position, double width, double height) {
-    super(color, position, width, height);
-    this.shapeName = "rectangle";
+  public Rectangle(Color color, Position2D position, double width, double height, String name) {
+    super(color, position, width, height, name);
+    this.shape = "rectangle";
   }
 
 }

@@ -13,25 +13,32 @@ public abstract class AShape implements IShape {
   protected Position2D position;
   protected double width;
   protected double height;
-  protected String shapeName;
+  protected String shape;
+  protected String name;
 
   /**
-   * Constructor of abstract shape that does not conduct assignment. This will be used when the
-   * the system creates a shape without a list of motions.
+   * Constructor of abstract shape that does not conduct assignment. This will be used when the the
+   * system creates a shape without a list of motions.
    */
-  public AShape() {
-    //
+  public AShape(String name) {
+    this.color = new Color(0, 0, 0);
+    this.position = new Position2D(0, 0);
+    this.width = 1;
+    this.height = 1;
+    this.name = name;
   }
 
   /**
    * Constructor of abstract shape that conducts assignment. This will be used if system creates a
-   *  shape with initialization values.
-   * @param color value of the shape that should be initialized.
+   * shape with initialization values.
+   *
+   * @param color    value of the shape that should be initialized.
    * @param position value of the shape that should be initialized.
-   * @param width value of the shape that should be initialized.
-   * @param height value of the shape that should be initialized.
+   * @param width    value of the shape that should be initialized.
+   * @param height   value of the shape that should be initialized.
+   * @param name     name of the shape that should be initialized.
    */
-  public AShape(Color color, Position2D position, double width, double height) {
+  public AShape(Color color, Position2D position, double width, double height, String name) {
     if (width <= 0 || height <= 0) {
       throw new IllegalArgumentException("The width and height must be positive");
     }
@@ -39,8 +46,8 @@ public abstract class AShape implements IShape {
     this.position = position;
     this.width = width;
     this.height = height;
+    this.name = name;
   }
-
 
   /**
    * Copy constructor of abstract shape so the user can make a copy of another shape.
@@ -51,19 +58,23 @@ public abstract class AShape implements IShape {
     this.position = shape.position;
     this.width = shape.width;
     this.height = shape.height;
-    this.shapeName = shape.shapeName;
+    this.shape = shape.shape;
+    this.name = shape.name;
   }
-
 
   @Override
   public String getShapeName() {
-    return this.shapeName;
+    return this.shape;
   }
 
+  @Override
+  public String getName() {
+    return this.name;
+  }
 
   @Override
   public int hashCode() {
-    return Objects.hash(color, position, width, height, shapeName);
+    return Objects.hash(color, position, width, height, shape);
   }
 
   @Override
@@ -78,7 +89,8 @@ public abstract class AShape implements IShape {
               && (this.position.equals(((AShape) that).position))
               && (Math.abs(this.width - ((AShape) (that)).width) < 0.1)
               && (Math.abs(this.height - ((AShape) (that)).height) < 0.1)
-              && (this.shapeName.equals(((AShape) (that)).shapeName));
+              && (this.shape.equals(((AShape) (that)).shape))
+              && (this.name.equals(((AShape) (that)).name));
     }
   }
 
