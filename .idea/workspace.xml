@@ -5,8 +5,11 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cs3500/excellence/hw5/AShape.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/excellence/hw5/AShape.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cs3500/excellence/hw5/AnimationModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/excellence/hw5/AnimationModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/excellence/hw5/AnimationOperation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/excellence/hw5/AnimationOperation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cs3500/excellence/hw5/IShape.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/excellence/hw5/IShape.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/excellence/hw5/Motion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/excellence/hw5/Motion.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cs3500/excellence/hw5/Oval.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/excellence/hw5/Oval.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cs3500/excellence/hw5/Position2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/excellence/hw5/Position2D.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cs3500/excellence/hw5/Rectangle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cs3500/excellence/hw5/Rectangle.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/AnimationModelTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/AnimationModelTest.java" afterDir="false" />
     </list>
@@ -176,7 +179,14 @@
       <option name="project" value="LOCAL" />
       <updated>1583967009202</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Fixed bugs.">
+      <created>1583971248762</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1583971248762</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -187,7 +197,8 @@
     <MESSAGE value="Added tests for removeShape() and toString() and fixed some bugs." />
     <MESSAGE value="Added tests for getAnimation() and fixed some bugs." />
     <MESSAGE value="Added tests for removeMotion() and fixed some bugs." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added tests for removeMotion() and fixed some bugs." />
+    <MESSAGE value="Fixed bugs." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed bugs." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -206,31 +217,31 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="489" y="101" key="#com.intellij.ide.util.MemberChooser/0.0.1440.900@0.0.1440.900" timestamp="1583797289017" />
-    <state x="270" y="0" width="893" height="877" key="CommitChangelistDialog2" timestamp="1583967008909">
+    <state x="270" y="0" width="893" height="877" key="CommitChangelistDialog2" timestamp="1583971248321">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="270" y="0" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1583967008909" />
+    <state x="270" y="0" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1583971248321" />
     <state x="270" y="23" width="893" height="877" key="CommitChangelistDialog2/0.23.1440.877@0.23.1440.877" timestamp="1583705899616" />
     <state x="549" y="171" key="FileChooserDialogImpl" timestamp="1583859315583">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="171" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1583859315583" />
-    <state width="1388" height="311" key="GridCell.Tab.0.bottom" timestamp="1583971214618">
+    <state width="1388" height="311" key="GridCell.Tab.0.bottom" timestamp="1583971862643">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1388" height="311" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1583971214618" />
-    <state width="1388" height="311" key="GridCell.Tab.0.center" timestamp="1583971214616">
+    <state width="1388" height="311" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1583971862643" />
+    <state width="1388" height="311" key="GridCell.Tab.0.center" timestamp="1583971862641">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1388" height="311" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1583971214616" />
-    <state width="1388" height="311" key="GridCell.Tab.0.left" timestamp="1583971214615">
+    <state width="1388" height="311" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1583971862641" />
+    <state width="1388" height="311" key="GridCell.Tab.0.left" timestamp="1583971862640">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1388" height="311" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1583971214615" />
-    <state width="1388" height="311" key="GridCell.Tab.0.right" timestamp="1583971214617">
+    <state width="1388" height="311" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1583971862640" />
+    <state width="1388" height="311" key="GridCell.Tab.0.right" timestamp="1583971862642">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1388" height="311" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1583971214617" />
+    <state width="1388" height="311" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1583971862642" />
     <state width="1388" height="371" key="GridCell.Tab.1.bottom" timestamp="1583970973915">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -272,10 +283,10 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="264" y="334" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1440.900@0.0.1440.900" timestamp="1582952219641" />
-    <state x="463" y="358" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1583971225419">
+    <state x="463" y="358" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1583971879622">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="463" y="358" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1440.900@0.0.1440.900" timestamp="1583971225419" />
+    <state x="463" y="358" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1440.900@0.0.1440.900" timestamp="1583971879622" />
     <state x="209" y="40" key="new project wizard" timestamp="1582836491587">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

@@ -4,8 +4,8 @@ import java.awt.*;
 
 /**
  * A rectangle shape implementation that is extending the abstract shape class. This class will be
- *  used mainly during initialization. The purpose is to assign "rectange" to shapeName variable in
- *  the abstract class so later on we know this shape is a rectangle.
+ * used mainly during initialization. The purpose is to assign "rectange" to shapeName variable in
+ * the abstract class so later on we know this shape is a rectangle.
  */
 public class Rectangle extends AShape {
 

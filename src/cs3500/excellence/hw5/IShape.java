@@ -2,7 +2,7 @@ package cs3500.excellence.hw5;
 
 /**
  * This interface represents a geometric shape. It contains a lists of operations such as get the
- *  name of the shape, compare different shapes.
+ * name of the shape, compare different shapes.
  */
 public interface IShape {
 

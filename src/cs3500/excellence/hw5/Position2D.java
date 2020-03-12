@@ -16,7 +16,8 @@ public class Position2D {
 
   /**
    * Constructor 1 of a position when the user provides x and y coordinate. This is usually called
-   *  at initialization.
+   * at initialization.
+   *
    * @param x coordinate given by user.
    * @param y coordinate given by user.
    * @throws IllegalArgumentException if the given x or y is negative
@@ -31,7 +32,8 @@ public class Position2D {
 
   /**
    * Copy constructor of the position class. This is usually called when the user wants to make a
-   *  copy of the current position.
+   * copy of the current position.
+   *
    * @param position another position object that user wants a copy of.
    */
   public Position2D(Position2D position) {
@@ -40,6 +42,7 @@ public class Position2D {
 
   /**
    * Getter function to get the current x coordinate.
+   *
    * @return the x coordinate
    */
   public double getX() {
@@ -48,6 +51,7 @@ public class Position2D {
 
   /**
    * Getter function to get the current y coordinate.
+   *
    * @return the y coordinate
    */
   public double getY() {

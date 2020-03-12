@@ -17,9 +17,9 @@ import static org.junit.Assert.assertTrue;
 
 /**
  * Test class for our animation model. Verify that our model can create shapes and add each shape's
- *  list of motions. Also verify the model can remove shape and list of motions. Lastly, the test
- *  should prove the model can correctly print out a string version of the entire animation and
- *  can create a list of shapes that contains shapes with its characteristics at a certain time.
+ * list of motions. Also verify the model can remove shape and list of motions. Lastly, the test
+ * should prove the model can correctly print out a string version of the entire animation and can
+ * create a list of shapes that contains shapes with its characteristics at a certain time.
  */
 public class AnimationModelTest {
 
@@ -27,7 +27,7 @@ public class AnimationModelTest {
 
   /**
    * createShape(shape, name) Invalid: shape = null/"", name = null/"" valid: create one given
-   * shape, and create more than one shapes
+   * shape, and create more than one shapes.
    */
   @Test(expected = IllegalArgumentException.class)
   public void testCreateShapeNull() {
@@ -63,7 +63,7 @@ public class AnimationModelTest {
 
   /**
    * removeShape(name) invalid: name does not exist in the animation valid: name exist in the
-   * animation
+   * animation.
    */
 
   @Test(expected = IllegalArgumentException.class)
@@ -308,12 +308,16 @@ public class AnimationModelTest {
             60, 0, 0, 255, 50,
             440, 250, 120, 60, 0, 0, 255);
     assertEquals("Shape R rectangle\n"
-            + "motion R 1 200.0 200.0 50.0 100.0 255 0 0 10 200.0 200.0 50.0 100.0 255 0 0\n"
-            + "motion R 10 200.0 200.0 50.0 100.0 255 0 0 50 300.0 300.0 50.0 100.0 255 0 0\n"
-            + "Shape O oval\n"
-            + "motion O 6 440.0 70.0 120.0 60.0 0 0 255 20 440.0 70.0 120.0 60.0 0 0 255\n"
-            + "motion O 20 440.0 70.0 120.0 60.0 0 0 255 50 440.0 250.0 120.0 60.0 0 0 255\n",
-        animationOne.toString());
+                    + "motion R 1 200.0 200.0 50.0 100.0 255 0 0 "
+                    + "10 200.0 200.0 50.0 100.0 255 0 0\n"
+                    + "motion R 10 200.0 200.0 50.0 100.0 255 0 0 "
+                    + "50 300.0 300.0 50.0 100.0 255 0 0\n"
+                    + "Shape O oval\n"
+                    + "motion O 6 440.0 70.0 120.0 60.0 0 0 255 "
+                    + "20 440.0 70.0 120.0 60.0 0 0 255\n"
+                    + "motion O 20 440.0 70.0 120.0 60.0 0 0 255 "
+                    + "50 440.0 250.0 120.0 60.0 0 0 255\n",
+            animationOne.toString());
   }
 
   /**
@@ -352,17 +356,26 @@ public class AnimationModelTest {
             440, 250, 120, 60, 0, 0, 255);
 
     assertEquals("Shape R1 rectangle\n"
-            + "motion R1 1 200.0 200.0 50.0 100.0 255 0 0 10 200.0 200.0 50.0 100.0 255 0 0\n"
-            + "motion R1 10 200.0 200.0 50.0 100.0 255 0 0 50 300.0 300.0 50.0 100.0 255 0 0\n"
-            + "Shape O2 oval\n"
-            + "motion O2 6 440.0 70.0 120.0 60.0 0 0 255 20 440.0 70.0 120.0 60.0 0 0 255\n"
-            + "motion O2 20 440.0 70.0 120.0 60.0 0 0 255 50 440.0 250.0 120.0 60.0 0 0 255\n"
-            + "Shape O1 oval\n"
-            + "motion O1 6 440.0 70.0 120.0 60.0 0 0 255 20 440.0 70.0 120.0 60.0 0 0 255\n"
-            + "motion O1 20 440.0 70.0 120.0 60.0 0 0 255 50 440.0 250.0 120.0 60.0 0 0 255\n"
-            + "Shape R2 rectangle\n"
-            + "motion R2 1 200.0 200.0 50.0 100.0 255 0 0 10 200.0 200.0 50.0 100.0 255 0 0\n"
-            + "motion R2 10 200.0 200.0 50.0 100.0 255 0 0 50 300.0 300.0 50.0 100.0 255 0 0\n", animationOne.toString());
+                    + "motion R1 1 200.0 200.0 50.0 100.0 255 0 0 "
+                    + "10 200.0 200.0 50.0 100.0 255 0 0\n"
+                    + "motion R1 10 200.0 200.0 50.0 100.0 255 0 0 "
+                    + "50 300.0 300.0 50.0 100.0 255 0 0\n"
+                    + "Shape O2 oval\n"
+                    + "motion O2 6 440.0 70.0 120.0 60.0 0 0 255 "
+                    + "20 440.0 70.0 120.0 60.0 0 0 255\n"
+                    + "motion O2 20 440.0 70.0 120.0 60.0 0 0 255 "
+                    + "50 440.0 250.0 120.0 60.0 0 0 255\n"
+                    + "Shape O1 oval\n"
+                    + "motion O1 6 440.0 70.0 120.0 60.0 0 0 255 "
+                    + "20 440.0 70.0 120.0 60.0 0 0 255\n"
+                    + "motion O1 20 440.0 70.0 120.0 60.0 0 0 255 "
+                    + "50 440.0 250.0 120.0 60.0 0 0 255\n"
+                    + "Shape R2 rectangle\n"
+                    + "motion R2 1 200.0 200.0 50.0 100.0 255 0 0 "
+                    + "10 200.0 200.0 50.0 100.0 255 0 0\n"
+                    + "motion R2 10 200.0 200.0 50.0 100.0 255 0 0 "
+                    + "50 300.0 300.0 50.0 100.0 255 0 0\n",
+            animationOne.toString());
   }
 
   @Test
@@ -384,12 +397,16 @@ public class AnimationModelTest {
             440, 70, 120, 60, 0, 0, 255);
 
     assertEquals("Shape R rectangle\n"
-            + "motion R 1 200.0 200.0 50.0 100.0 255 0 0 10 200.0 200.0 50.0 100.0 255 0 0\n"
-            + "motion R 10 200.0 200.0 50.0 100.0 255 0 0 50 300.0 300.0 50.0 100.0 255 0 0\n"
-            + "Shape O oval\n"
-            + "motion O 6 440.0 70.0 120.0 60.0 0 0 255 20 440.0 70.0 120.0 60.0 0 0 255\n"
-            + "motion O 20 440.0 70.0 120.0 60.0 0 0 255 50 440.0 250.0 120.0 60.0 0 0 255\n",
-        animationOne.toString());
+                    + "motion R 1 200.0 200.0 50.0 100.0 255 0 0 "
+                    + "10 200.0 200.0 50.0 100.0 255 0 0\n"
+                    + "motion R 10 200.0 200.0 50.0 100.0 255 0 0 "
+                    + "50 300.0 300.0 50.0 100.0 255 0 0\n"
+                    + "Shape O oval\n"
+                    + "motion O 6 440.0 70.0 120.0 60.0 0 0 255 "
+                    + "20 440.0 70.0 120.0 60.0 0 0 255\n"
+                    + "motion O 20 440.0 70.0 120.0 60.0 0 0 255 "
+                    + "50 440.0 250.0 120.0 60.0 0 0 255\n",
+            animationOne.toString());
   }
 
   /**
@@ -494,7 +511,7 @@ public class AnimationModelTest {
   }
 
   /**
-   * getAnimation(time) invalid: time < 1 valid: get the current state of the animation
+   * getAnimation(time) invalid: time < 1 valid: get the current state of the animation.
    */
 
   @Test(expected = IllegalArgumentException.class)
@@ -740,9 +757,12 @@ public class AnimationModelTest {
             300, 300, 25, 100, 255, 0, 0);
     animationOne.removeMotion("R", 0);
     assertEquals("Shape R rectangle\n"
-            + "motion R 10 200.0 200.0 50.0 100.0 255 0 0 50 300.0 300.0 50.0 100.0 255 0 0\n"
-            + "motion R 50 300.0 300.0 50.0 100.0 255 0 0 51 300.0 300.0 50.0 100.0 255 0 0\n"
-            + "motion R 51 300.0 300.0 50.0 100.0 255 0 0 70 300.0 300.0 25.0 100.0 255 0 0\n", animationOne.toString());
+            + "motion R 10 200.0 200.0 50.0 100.0 255 0 0 "
+            + "50 300.0 300.0 50.0 100.0 255 0 0\n"
+            + "motion R 50 300.0 300.0 50.0 100.0 255 0 0 "
+            + "51 300.0 300.0 50.0 100.0 255 0 0\n"
+            + "motion R 51 300.0 300.0 50.0 100.0 255 0 0 "
+            + "70 300.0 300.0 25.0 100.0 255 0 0\n", animationOne.toString());
   }
 
   @Test
@@ -763,9 +783,13 @@ public class AnimationModelTest {
             300, 300, 25, 100, 255, 0, 0);
     animationOne.removeMotion("R", 3);
     assertEquals("Shape R rectangle\n"
-            + "motion R 1 200.0 200.0 50.0 100.0 255 0 0 10 200.0 200.0 50.0 100.0 255 0 0\n"
-            + "motion R 10 200.0 200.0 50.0 100.0 255 0 0 50 300.0 300.0 50.0 100.0 255 0 0\n"
-            + "motion R 50 300.0 300.0 50.0 100.0 255 0 0 51 300.0 300.0 50.0 100.0 255 0 0\n", animationOne.toString());
+                    + "motion R 1 200.0 200.0 50.0 100.0 255 0 0 "
+                    + "10 200.0 200.0 50.0 100.0 255 0 0\n"
+                    + "motion R 10 200.0 200.0 50.0 100.0 255 0 0 "
+                    + "50 300.0 300.0 50.0 100.0 255 0 0\n"
+                    + "motion R 50 300.0 300.0 50.0 100.0 255 0 0 "
+                    + "51 300.0 300.0 50.0 100.0 255 0 0\n",
+            animationOne.toString());
   }
 
   @Test(expected = IllegalArgumentException.class)

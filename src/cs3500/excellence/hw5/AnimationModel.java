@@ -19,9 +19,8 @@ public class AnimationModel implements AnimationOperation {
   private final Map<String, IShape> nameMap;
 
   /**
-   * This final hash map structure will store the entire animation.
-   * key: shape.
-   * value: the shape's list of motions.
+   * This final hash map structure will store the entire animation. key: shape. value: the shape's
+   * list of motions.
    */
   private final Map<IShape, List<Motion>> animation;
 
@@ -109,9 +108,10 @@ public class AnimationModel implements AnimationOperation {
   }
 
   /**
-   * Helper function for toString().
-   * Convert the given list of motions to lines of string based on toString()'s rules.
-   * @param name of the shape that we want to print out the list of motions.
+   * Helper function for toString(). Convert the given list of motions to lines of string based on
+   * toString()'s rules.
+   *
+   * @param name         of the shape that we want to print out the list of motions.
    * @param listOfMotion the list of motions associated to the name provided by the user.
    * @return several lines of string thats a list of motions.
    * @throws IllegalArgumentException if there is a teleporation.
@@ -122,7 +122,7 @@ public class AnimationModel implements AnimationOperation {
 
     if (!checkValidAnimation(listOfMotion)) {
       throw new IllegalStateException("There is teleportation or overlap in this shape, this "
-          + "shape will be deleted.");
+              + "shape will be deleted.");
     }
 
     String result = "";
@@ -149,15 +149,18 @@ public class AnimationModel implements AnimationOperation {
     for (int i = 0; i < listOfMotion.size() - 1; i++) {
       result = listOfMotion.get(i).getEndTime() == listOfMotion.get(i + 1).getStartTime();
       result = result
-          && (listOfMotion.get(i).getEndColor().equals(listOfMotion.get(i + 1).getStartColor()));
+              && (listOfMotion.get(i).getEndColor().equals(
+              listOfMotion.get(i + 1).getStartColor()));
       result = result
-          && (listOfMotion.get(i).getEndHeight() == listOfMotion.get(i + 1).getStartHeight());
+              && (listOfMotion.get(i).getEndHeight() == listOfMotion.get(i + 1).getStartHeight());
       result = result
-          && (listOfMotion.get(i).getEndWidth() == listOfMotion.get(i + 1).getStartWidth());
+              && (listOfMotion.get(i).getEndWidth() == listOfMotion.get(i + 1).getStartWidth());
       result = result
-          && (listOfMotion.get(i).getEndPosition().getX() == listOfMotion.get(i + 1).getStartPosition().getX());
+              && (listOfMotion.get(i).getEndPosition().getX()
+              == listOfMotion.get(i + 1).getStartPosition().getX());
       result = result
-          && (listOfMotion.get(i).getEndPosition().getY() == listOfMotion.get(i + 1).getStartPosition().getY());
+              && (listOfMotion.get(i).getEndPosition().getY()
+              == listOfMotion.get(i + 1).getStartPosition().getY());
       // If there is a mismatch, delete the shape and throw new illegal argument.
       if (!result) {
         break;
@@ -190,8 +193,9 @@ public class AnimationModel implements AnimationOperation {
 
   /**
    * Helper for getAnimation(). Checks the list of motion to see if the given time exist.
+   *
    * @param listOfMotion of a shape provided by the user.
-   * @param time that user wants to validate that exist.
+   * @param time         that user wants to validate that exist.
    * @return true if the time exist.
    */
   private boolean isTimeInListOfMotion(List<Motion> listOfMotion, int time) {
@@ -204,15 +208,16 @@ public class AnimationModel implements AnimationOperation {
 
   /**
    * Helper for getAnimation(). Builds a copy of a particular shape that contains the color,
-   *  position, width, height at a given time.
-   * @param shape the kind of shape that user wants to build.
-   * @param tmpMotion the motion that user wants to calculate the color, position, width, height
-   *                   of the shape.
-   * @param time  time at which user wants to calculate new shape characteristics at.
+   * position, width, height at a given time.
+   *
+   * @param shape     the kind of shape that user wants to build.
+   * @param tmpMotion the motion that user wants to calculate the color, position, width, height of
+   *                  the shape.
+   * @param time      time at which user wants to calculate new shape characteristics at.
    * @return the newly created shape.
    * @throws IllegalArgumentException if the shape does not exist.
    */
-  private IShape buildShape(String shapeName, Motion tmpMotion, int time, String name) {
+  private IShape buildShape(String shape, Motion tmpMotion, int time, String name) {
 
     double ratio = (double) (time - tmpMotion.getStartTime())
             / (tmpMotion.getEndTime() - tmpMotion.getStartTime());
@@ -245,11 +250,12 @@ public class AnimationModel implements AnimationOperation {
         throw new IllegalArgumentException("Please provide a valid shape name.");
     }
   }
-  
-   /**
+
+  /**
    * Find and return the motion that has the given time in a list of motions.
+   *
    * @param listOfMotion we want to find the motion in.
-   * @param time the time of the motion we want to find.
+   * @param time         the time of the motion we want to find.
    * @return the motion that contains the time.
    */
   private Motion findMotion(List<Motion> listOfMotion, int time) {
@@ -276,7 +282,7 @@ public class AnimationModel implements AnimationOperation {
     //  index is not first or last, throw illegal argument.
     if (index != 0 && index != (animation.get(tmpShape).size() - 1)) {
       throw new IllegalArgumentException("The motion is not the first or the last in the list, "
-          + "can't be remove as of right now.");
+              + "can't be remove as of right now.");
     }
 
     List<Motion> tmpListOfMotion = animation.get(tmpShape);
@@ -286,7 +292,7 @@ public class AnimationModel implements AnimationOperation {
 
   /**
    * This is a comparator class that we will use when trying to sort a list of motion based on its
-   *  start time.
+   * start time.
    */
   static class SortByStartTime implements Comparator<Motion> {
     // Used for sorting in ascending order of

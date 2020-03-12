@@ -51,6 +51,7 @@ public abstract class AShape implements IShape {
 
   /**
    * Copy constructor of abstract shape so the user can make a copy of another shape.
+   *
    * @param shape the user wants to make a copy of.
    */
   public AShape(AShape shape) {

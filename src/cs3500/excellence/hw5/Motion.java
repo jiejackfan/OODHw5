@@ -1,12 +1,13 @@
 package cs3500.excellence.hw5;
+
 import java.awt.*;
 
 
 /**
- * This class represents a transiton of state from one time to another of one particular shape.
- * The transition of state means the motion will store the starting states and ending states.
- * The starting states include: starting time, width, height, position, color.
- * The ending states include: ending time, width, height, position, color.
+ * This class represents a transiton of state from one time to another of one particular shape. The
+ * transition of state means the motion will store the starting states and ending states. The
+ * starting states include: starting time, width, height, position, color. The ending states
+ * include: ending time, width, height, position, color.
  */
 public class Motion {
 
@@ -30,24 +31,25 @@ public class Motion {
 
   /**
    * Public constructor 1 for motion. This is used when model wants to enter a new motion into a
-   *  shape's list of motions. The following parameters will be given by the input file.
-   * @param startTime starting time.
+   * shape's list of motions. The following parameters will be given by the input file.
+   *
+   * @param startTime     starting time.
    * @param startPosition starting position.
-   * @param startWidth starting width.
-   * @param startHeight starting height.
-   * @param startColor starting color.
-   * @param endTime ending time.
-   * @param endPosition ending position.
-   * @param endWidth ending width.
-   * @param endHeight ending height.
-   * @param endColor ending color.
+   * @param startWidth    starting width.
+   * @param startHeight   starting height.
+   * @param startColor    starting color.
+   * @param endTime       ending time.
+   * @param endPosition   ending position.
+   * @param endWidth      ending width.
+   * @param endHeight     ending height.
+   * @param endColor      ending color.
    * @throws IllegalArgumentException if starting and ending times are less than 1.
    * @throws IllegalArgumentException if starting time is greater than ending time.
    * @throws IllegalArgumentException if any width or height are negative.
    */
   public Motion(int startTime, Position2D startPosition, double startWidth, double startHeight,
-                Color startColor, int endTime, Position2D endPosition, double endWidth, double endHeight,
-                Color endColor) {
+                Color startColor, int endTime, Position2D endPosition, double endWidth,
+                double endHeight, Color endColor) {
     // Check whether the given times are valid.
     if (startTime < 1 || endTime < 1) {
       throw new IllegalArgumentException("Invalid time.");
@@ -74,8 +76,9 @@ public class Motion {
   }
 
   /**
-   * Copy constructor of a motion. This will be used when we want to create a copy of this motion
-   *  in the model.
+   * Copy constructor of a motion. This will be used when we want to create a copy of this motion in
+   * the model.
+   *
    * @param motion a motion that we want to copy in the model.
    */
   public Motion(Motion motion) {
@@ -115,6 +118,7 @@ public class Motion {
 
   /**
    * Getter function to get start time.
+   *
    * @return start time.
    */
   public int getStartTime() {
@@ -123,6 +127,7 @@ public class Motion {
 
   /**
    * Getter function to get end time.
+   *
    * @return end time.
    */
   public int getEndTime() {
@@ -131,6 +136,7 @@ public class Motion {
 
   /**
    * Getter function to get start position.
+   *
    * @return start position.
    */
   public Position2D getStartPosition() {
@@ -139,6 +145,7 @@ public class Motion {
 
   /**
    * Getter function to get end position.
+   *
    * @return end position.
    */
   public Position2D getEndPosition() {
@@ -147,6 +154,7 @@ public class Motion {
 
   /**
    * Getter function to get start width.
+   *
    * @return start width.
    */
   public double getStartWidth() {
@@ -155,6 +163,7 @@ public class Motion {
 
   /**
    * Getter function to get end width.
+   *
    * @return end width.
    */
   public double getEndWidth() {
@@ -163,6 +172,7 @@ public class Motion {
 
   /**
    * Getter function to get start height.
+   *
    * @return start height.
    */
   public double getStartHeight() {
@@ -171,6 +181,7 @@ public class Motion {
 
   /**
    * Getter function to get end height.
+   *
    * @return end height.
    */
   public double getEndHeight() {
@@ -179,6 +190,7 @@ public class Motion {
 
   /**
    * Getter function to get start color.
+   *
    * @return start color.
    */
   public Color getStartColor() {
@@ -187,6 +199,7 @@ public class Motion {
 
   /**
    * Getter function to get end color.
+   *
    * @return end color.
    */
   public Color getEndColor() {
@@ -195,13 +208,16 @@ public class Motion {
 
   /**
    * Function to change start time. Not used currently in our implementation.
+   *
    * @param time the user wants to change as the new start time.
    */
   public void changeStartTime(int time) {
     this.startTime = time;
   }
+
   /**
    * Function to change end time. Not used currently in our implementation.
+   *
    * @param time the user wants to change as the new end time.
    */
   public void changeEndTime(int time) {

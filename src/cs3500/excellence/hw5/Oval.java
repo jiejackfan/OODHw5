@@ -4,8 +4,8 @@ import java.awt.*;
 
 /**
  * An oval shape implementation that is extending the abstract shape class. This class will be used
- *  mainly during initialization. The purpose is to assign "oval" to shapeName variable in the
- *  abstract class so later on we know this shape is an oval.
+ * mainly during initialization. The purpose is to assign "oval" to shapeName variable in the
+ * abstract class so later on we know this shape is an oval.
  */
 public class Oval extends AShape {
 
